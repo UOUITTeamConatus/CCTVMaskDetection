@@ -39,7 +39,7 @@ namespace CCTVMaskDetection
             this.ClientSize = new System.Drawing.Size(1905, 1042);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Team Conatus 방역관제CCTV시스템";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
