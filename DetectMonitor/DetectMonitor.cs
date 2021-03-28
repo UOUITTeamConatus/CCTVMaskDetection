@@ -19,7 +19,7 @@ using OpenCvSharp.Dnn;
 
 namespace DetectMonitor
 {
-    public partial class DetectMonitor : Panel
+    public partial class DetectMonitor : PictureBox
     {
         #region 1: 필드 값들
         private static string currentPath = Path.GetDirectoryName(
@@ -40,10 +40,9 @@ namespace DetectMonitor
             model = BaseModel.LoadModel(maskdetectorPath);
             mobilenetv2 = new MobileNetV2();
         }
-
-        protected override void OnPaint(PaintEventArgs pe)
+        private void DetectMask()
         {
-            base.OnPaint(pe);
+
         }
     }
 }
