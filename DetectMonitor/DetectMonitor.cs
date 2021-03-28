@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 using Keras.Models;
 using Keras.Applications.MobileNet;
 using Keras.PreProcessing.Image;
-using OpenCvSharp.Dnn;
 using Numpy;
+using OpenCvSharp;
+using OpenCvSharp.Extensions;
+using OpenCvSharp.Dnn;
+
 
 namespace DetectMonitor
 {
@@ -27,11 +33,17 @@ namespace DetectMonitor
         private Net facenet;
         private MobileNetV2 mobilenetv2;
         #endregion
-
         public DetectMonitor()
         {
-      
+            InitializeComponent();
+            facenet = CvDnn.ReadNetFromCaffe(prototxtPath, caffemodelPath);
+            model = BaseModel.LoadModel(maskdetectorPath);
+            mobilenetv2 = new MobileNetV2();
         }
 
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            base.OnPaint(pe);
+        }
     }
 }
