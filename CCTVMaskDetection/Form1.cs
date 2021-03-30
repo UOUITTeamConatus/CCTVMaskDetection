@@ -111,7 +111,10 @@ namespace CCTVMaskDetection
 
         private void split_view_Click(object sender, EventArgs e)
         {
-            
+            screen1.Visible = true;
+            screen2.Visible = true;
+            screen3.Visible = true;
+            screen4.Visible = true;
         }
     }
 }

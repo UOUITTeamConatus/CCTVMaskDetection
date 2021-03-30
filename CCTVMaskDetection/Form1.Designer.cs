@@ -118,7 +118,7 @@ namespace CCTVMaskDetection
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer1.Size = new System.Drawing.Size(1924, 1055);
-            this.splitContainer1.SplitterDistance = 1460;
+            this.splitContainer1.SplitterDistance = 1435;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
@@ -142,17 +142,17 @@ namespace CCTVMaskDetection
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1460, 1055);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1435, 1055);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // screen3
             // 
             this.screen3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.screen3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.screen3.Location = new System.Drawing.Point(733, 531);
+            this.screen3.Location = new System.Drawing.Point(720, 531);
             this.screen3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.screen3.Name = "screen3";
-            this.screen3.Size = new System.Drawing.Size(724, 520);
+            this.screen3.Size = new System.Drawing.Size(712, 520);
             this.screen3.TabIndex = 3;
             this.screen3.TabStop = false;
             // 
@@ -163,7 +163,7 @@ namespace CCTVMaskDetection
             this.screen4.Location = new System.Drawing.Point(3, 531);
             this.screen4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.screen4.Name = "screen4";
-            this.screen4.Size = new System.Drawing.Size(724, 520);
+            this.screen4.Size = new System.Drawing.Size(711, 520);
             this.screen4.TabIndex = 2;
             this.screen4.TabStop = false;
             // 
@@ -171,10 +171,10 @@ namespace CCTVMaskDetection
             // 
             this.screen2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.screen2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.screen2.Location = new System.Drawing.Point(733, 4);
+            this.screen2.Location = new System.Drawing.Point(720, 4);
             this.screen2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.screen2.Name = "screen2";
-            this.screen2.Size = new System.Drawing.Size(724, 519);
+            this.screen2.Size = new System.Drawing.Size(712, 519);
             this.screen2.TabIndex = 1;
             this.screen2.TabStop = false;
             // 
@@ -185,12 +185,14 @@ namespace CCTVMaskDetection
             this.screen1.Location = new System.Drawing.Point(3, 4);
             this.screen1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.screen1.Name = "screen1";
-            this.screen1.Size = new System.Drawing.Size(724, 519);
+            this.screen1.Size = new System.Drawing.Size(711, 519);
             this.screen1.TabIndex = 0;
             this.screen1.TabStop = false;
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.AutoScroll = true;
+            this.tableLayoutPanel2.AutoScrollMargin = new System.Drawing.Size(0, 1000);
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.groupBox5, 0, 3);
@@ -203,12 +205,12 @@ namespace CCTVMaskDetection
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 5;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.57142F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 380F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.42858F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(459, 1055);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(484, 1055);
             this.tableLayoutPanel2.TabIndex = 15;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
@@ -228,11 +230,11 @@ namespace CCTVMaskDetection
             this.groupBox5.Controls.Add(this.record_cbtn);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(3, 583);
+            this.groupBox5.Location = new System.Drawing.Point(3, 564);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Size = new System.Drawing.Size(453, 272);
+            this.groupBox5.Size = new System.Drawing.Size(478, 242);
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "캡쳐 및 녹화";
@@ -318,7 +320,7 @@ namespace CCTVMaskDetection
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(232, 76);
+            this.groupBox3.Location = new System.Drawing.Point(232, 51);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -390,11 +392,11 @@ namespace CCTVMaskDetection
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 863);
+            this.groupBox1.Location = new System.Drawing.Point(3, 814);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(453, 188);
+            this.groupBox1.Size = new System.Drawing.Size(478, 237);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Log";
@@ -402,7 +404,7 @@ namespace CCTVMaskDetection
             // logwrite_btn
             // 
             this.logwrite_btn.AutoSize = true;
-            this.logwrite_btn.Location = new System.Drawing.Point(330, 90);
+            this.logwrite_btn.Location = new System.Drawing.Point(312, 91);
             this.logwrite_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.logwrite_btn.Name = "logwrite_btn";
             this.logwrite_btn.Size = new System.Drawing.Size(86, 41);
@@ -413,7 +415,7 @@ namespace CCTVMaskDetection
             // logclear_btn
             // 
             this.logclear_btn.AutoSize = true;
-            this.logclear_btn.Location = new System.Drawing.Point(330, 31);
+            this.logclear_btn.Location = new System.Drawing.Point(312, 27);
             this.logclear_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.logclear_btn.Name = "logclear_btn";
             this.logclear_btn.Size = new System.Drawing.Size(86, 41);
@@ -429,7 +431,7 @@ namespace CCTVMaskDetection
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
             this.textBox6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox6.Size = new System.Drawing.Size(302, 157);
+            this.textBox6.Size = new System.Drawing.Size(302, 206);
             this.textBox6.TabIndex = 5;
             // 
             // groupBox2
@@ -439,11 +441,11 @@ namespace CCTVMaskDetection
             this.groupBox2.Controls.Add(this.savePath);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(3, 497);
+            this.groupBox2.Location = new System.Drawing.Point(3, 484);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(453, 78);
+            this.groupBox2.Size = new System.Drawing.Size(478, 72);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "저장 경로 설정";
@@ -451,7 +453,7 @@ namespace CCTVMaskDetection
             // path_btn
             // 
             this.path_btn.AutoSize = true;
-            this.path_btn.Location = new System.Drawing.Point(332, 32);
+            this.path_btn.Location = new System.Drawing.Point(332, 23);
             this.path_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.path_btn.Name = "path_btn";
             this.path_btn.Size = new System.Drawing.Size(92, 41);
@@ -462,10 +464,10 @@ namespace CCTVMaskDetection
             // 
             // savePath
             // 
-            this.savePath.Location = new System.Drawing.Point(6, 38);
+            this.savePath.Location = new System.Drawing.Point(20, 27);
             this.savePath.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.savePath.Name = "savePath";
-            this.savePath.Size = new System.Drawing.Size(320, 30);
+            this.savePath.Size = new System.Drawing.Size(299, 30);
             this.savePath.TabIndex = 1;
             // 
             // groupBox6
@@ -482,11 +484,11 @@ namespace CCTVMaskDetection
             this.groupBox6.Controls.Add(this.camera1_add);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(3, 116);
+            this.groupBox6.Location = new System.Drawing.Point(3, 104);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox6.Size = new System.Drawing.Size(453, 373);
+            this.groupBox6.Size = new System.Drawing.Size(478, 372);
             this.groupBox6.TabIndex = 13;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "네트워크 스트림 장치 연결";
@@ -496,7 +498,7 @@ namespace CCTVMaskDetection
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label8.Location = new System.Drawing.Point(85, 320);
+            this.label8.Location = new System.Drawing.Point(47, 314);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(351, 34);
             this.label8.TabIndex = 16;
@@ -545,7 +547,7 @@ namespace CCTVMaskDetection
             // connect_btn
             // 
             this.connect_btn.AutoSize = true;
-            this.connect_btn.Location = new System.Drawing.Point(342, 31);
+            this.connect_btn.Location = new System.Drawing.Point(312, 31);
             this.connect_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.connect_btn.Name = "connect_btn";
             this.connect_btn.Size = new System.Drawing.Size(86, 41);
@@ -558,7 +560,7 @@ namespace CCTVMaskDetection
             this.camera4_add.Location = new System.Drawing.Point(96, 260);
             this.camera4_add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.camera4_add.Name = "camera4_add";
-            this.camera4_add.Size = new System.Drawing.Size(331, 30);
+            this.camera4_add.Size = new System.Drawing.Size(302, 30);
             this.camera4_add.TabIndex = 9;
             // 
             // camera3_add
@@ -566,7 +568,7 @@ namespace CCTVMaskDetection
             this.camera3_add.Location = new System.Drawing.Point(96, 204);
             this.camera3_add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.camera3_add.Name = "camera3_add";
-            this.camera3_add.Size = new System.Drawing.Size(331, 30);
+            this.camera3_add.Size = new System.Drawing.Size(302, 30);
             this.camera3_add.TabIndex = 7;
             // 
             // camera2_add
@@ -574,7 +576,7 @@ namespace CCTVMaskDetection
             this.camera2_add.Location = new System.Drawing.Point(96, 145);
             this.camera2_add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.camera2_add.Name = "camera2_add";
-            this.camera2_add.Size = new System.Drawing.Size(331, 30);
+            this.camera2_add.Size = new System.Drawing.Size(302, 30);
             this.camera2_add.TabIndex = 5;
             // 
             // camera1_add
@@ -582,7 +584,7 @@ namespace CCTVMaskDetection
             this.camera1_add.Location = new System.Drawing.Point(96, 91);
             this.camera1_add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.camera1_add.Name = "camera1_add";
-            this.camera1_add.Size = new System.Drawing.Size(331, 30);
+            this.camera1_add.Size = new System.Drawing.Size(302, 30);
             this.camera1_add.TabIndex = 3;
             // 
             // tableLayoutPanel3
@@ -599,7 +601,7 @@ namespace CCTVMaskDetection
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 112F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(453, 104);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(478, 92);
             this.tableLayoutPanel3.TabIndex = 14;
             this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
             // 
@@ -616,7 +618,7 @@ namespace CCTVMaskDetection
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Size = new System.Drawing.Size(323, 96);
+            this.groupBox4.Size = new System.Drawing.Size(341, 84);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "화면 방식";
@@ -625,7 +627,7 @@ namespace CCTVMaskDetection
             // 
             this.split_view.BackColor = System.Drawing.SystemColors.Control;
             this.split_view.Image = global::CCTVMaskDetection.Properties.Resources.icons8_four_squares_50;
-            this.split_view.Location = new System.Drawing.Point(241, 41);
+            this.split_view.Location = new System.Drawing.Point(248, 27);
             this.split_view.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.split_view.Name = "split_view";
             this.split_view.Size = new System.Drawing.Size(38, 39);
@@ -637,7 +639,7 @@ namespace CCTVMaskDetection
             // 
             this.Full_view.BackColor = System.Drawing.SystemColors.Control;
             this.Full_view.Image = global::CCTVMaskDetection.Properties.Resources.icons8_square_border_32;
-            this.Full_view.Location = new System.Drawing.Point(93, 45);
+            this.Full_view.Location = new System.Drawing.Point(101, 31);
             this.Full_view.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Full_view.Name = "Full_view";
             this.Full_view.Size = new System.Drawing.Size(37, 31);
@@ -651,7 +653,7 @@ namespace CCTVMaskDetection
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(159, 49);
+            this.label10.Location = new System.Drawing.Point(166, 35);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(76, 23);
             this.label10.TabIndex = 6;
@@ -663,7 +665,7 @@ namespace CCTVMaskDetection
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 49);
+            this.label6.Location = new System.Drawing.Point(14, 35);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 23);
             this.label6.TabIndex = 5;
@@ -674,10 +676,10 @@ namespace CCTVMaskDetection
             // 
             this.ON_btn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ON_btn.Image = global::CCTVMaskDetection.Properties.Resources.icons8_power_off_button_32;
-            this.ON_btn.Location = new System.Drawing.Point(332, 4);
+            this.ON_btn.Location = new System.Drawing.Point(350, 4);
             this.ON_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ON_btn.Name = "ON_btn";
-            this.ON_btn.Size = new System.Drawing.Size(118, 96);
+            this.ON_btn.Size = new System.Drawing.Size(125, 84);
             this.ON_btn.TabIndex = 16;
             this.ON_btn.UseVisualStyleBackColor = true;
             this.ON_btn.Click += new System.EventHandler(this.ON_btn_Click);
