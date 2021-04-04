@@ -71,34 +71,28 @@ namespace CCTVMaskDetection
             switch (fullview)
             {
                 case 1:
-                    screen1.Visible = true;
-                    screen2.Visible = false;
-                    screen3.Visible = false;
-                    screen4.Visible = false;
+                    cctvMonitor0.Visible = true;
+                    cctvMonitor1.Visible = false;
+
 
 
                     break;
                 case 2:
-                    screen1.Visible = false;
-                    screen2.Visible = true;
-                    screen3.Visible = false;
-                    screen4.Visible = false;
+                    cctvMonitor0.Visible = false;
+                    cctvMonitor1.Visible = true;
+
 
 
                     break;
                 case 3:
-                    screen1.Visible = false;
-                    screen2.Visible = false;
-                    screen3.Visible = true;
-                    screen4.Visible = false;
+                    cctvMonitor0.Visible = false;
+                    cctvMonitor1.Visible = false;
 
 
                     break;
                 case 4:
-                    screen1.Visible = false;
-                    screen2.Visible = false;
-                    screen3.Visible = false;
-                    screen4.Visible = true;
+                    cctvMonitor0.Visible = false;
+                    cctvMonitor1.Visible = false;
                     fullview = 0;
 
 
@@ -111,10 +105,9 @@ namespace CCTVMaskDetection
 
         private void split_view_Click(object sender, EventArgs e)
         {
-            screen1.Visible = true;
-            screen2.Visible = true;
-            screen3.Visible = true;
-            screen4.Visible = true;
+            cctvMonitor0.Visible = true;
+            cctvMonitor1.Visible = true;
+
         }
     }
 }
