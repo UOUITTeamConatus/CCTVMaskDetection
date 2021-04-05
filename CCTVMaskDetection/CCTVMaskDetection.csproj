@@ -126,6 +126,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="models\black.model" />
+    <None Include="models\default.model" />
+    <None Include="models\deploy.prototxt" />
+    <None Include="models\mask_detector.model" />
+    <None Include="models\res10_300x300_ssd_iter_140000.caffemodel" />
+    <None Include="models\test.model" />
+    <None Include="models\total.model" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -139,12 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DetectMonitor\DetectMonitor.csproj">
-      <Project>{1ed9cfd4-e7fe-4856-9a2c-a8341ac4944e}</Project>
-      <Name>DetectMonitor</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-four-squares-50.png" />
