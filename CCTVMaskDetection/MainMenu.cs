@@ -125,17 +125,16 @@ namespace CCTVMaskDetection
             videoCapture0 = new VideoCapture(RtspAddr0);
             Thread.Sleep(5000);
         }
-        private void connect_btn0_Click(object sender, EventArgs e)
+        void RunCamera0()
         {
+            VideoCapture videoCapture;
             if (chk_wc0.Checked == true)
             {
-                bgWorker.DoWork += new DoWorkEventHandler(LoadVideoCapture0Web);
-                bgWorker.RunWorkerCompleted += (sender, args) => detectionLoadingComplete();
+                videoCapture = new VideoCapture(WEBaddr0);
             }
             else
             {
-                bgWorker.DoWork += new DoWorkEventHandler(LoadVideoCapture0ipAddr);
-                bgWorker.RunWorkerCompleted += (sender, args) => detectionLoadingComplete();
+                videoCapture = new VideoCapture(RtspAddr0);
             }
             using (Mat image = new Mat())
             {
@@ -144,7 +143,7 @@ namespace CCTVMaskDetection
                     IOButton0.Text = "OFF"; 
                     while (IOButton0.Text.Equals("OFF"))
                     {
-                    if (!videoCapture0.Read(image))
+                    if (!videoCapture.Read(image))
                     {
                         Cv2.WaitKey();
                     }
@@ -159,7 +158,46 @@ namespace CCTVMaskDetection
                 }
                 else
                 {
-                    videoCapture0.Release();
+                    videoCapture.Release();
+                    IOButton0.Text = "ON";
+                }
+            }
+
+        }
+        private void connect_btn0_Click(object sender, EventArgs e)
+        {
+            VideoCapture videoCapture;
+            if (chk_wc0.Checked == true)
+            {
+                videoCapture = new VideoCapture(WEBaddr0);
+            }
+            else
+            {
+                videoCapture = new VideoCapture(RtspAddr0);
+            }
+            using (Mat image = new Mat())
+            {
+                if (IOButton0.Text.Equals("ON"))
+                {
+                    IOButton0.Text = "OFF"; 
+                    while (IOButton0.Text.Equals("OFF"))
+                    {
+                    if (!videoCapture.Read(image))
+                    {
+                        Cv2.WaitKey();
+                    }
+                    if (image.Size().Width > 0 && image.Size().Height > 0)
+                    {
+                        Mat result = Detection0.DetectMask(image);
+                        Bitmap bitmap = BitmapConverter.ToBitmap(result);
+                        cctvMonitor0.Image = bitmap;
+                    }
+                        if (Cv2.WaitKey(1) >= 27) break;
+                    }
+                }
+                else
+                {
+                    videoCapture.Release();
                     IOButton0.Text = "ON";
                 }
             }
