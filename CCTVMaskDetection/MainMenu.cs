@@ -47,6 +47,7 @@ namespace CCTVMaskDetection
         #region 3. BackgroundWorkers
         LoadingWindow loadingWindow = new LoadingWindow();
         BackgroundWorker bgWorker = new BackgroundWorker();
+
         #endregion
 
         //public string Path = "";
@@ -62,7 +63,7 @@ namespace CCTVMaskDetection
             Detection1 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
             videoCapture0 = new VideoCapture(0);
             videoCapture1 = new VideoCapture("rtsp://192.168.0.137/profile2/media.smp");
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
         }
         void detectionLoadingComplete()
         {
@@ -120,13 +121,14 @@ namespace CCTVMaskDetection
         void LoadVideoCapture0Web(object sender, DoWorkEventArgs e)
         {
             videoCapture0 = new VideoCapture(WEBaddr0);
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
         } 
         void LoadVideoCapture0ipAddr(object sender, DoWorkEventArgs e)
         {
             videoCapture0 = new VideoCapture(RtspAddr0);
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
         }
+        /*
         void RunCamera0()
         {
             VideoCapture videoCapture;
@@ -142,19 +144,19 @@ namespace CCTVMaskDetection
             {
                 if (IOButton0.Text.Equals("ON"))
                 {
-                    IOButton0.Text = "OFF"; 
+                    IOButton0.Text = "OFF";
                     while (IOButton0.Text.Equals("OFF"))
                     {
-                    if (!videoCapture.Read(image))
-                    {
-                        Cv2.WaitKey();
-                    }
-                    if (image.Size().Width > 0 && image.Size().Height > 0)
-                    {
-                        Mat result = Detection0.DetectMask(image);
-                        Bitmap bitmap = BitmapConverter.ToBitmap(result);
-                        cctvMonitor0.Image = bitmap;
-                    }
+                        if (!videoCapture.Read(image))
+                        {
+                            Cv2.WaitKey();
+                        }
+                        if (image.Size().Width > 0 && image.Size().Height > 0)
+                        {
+                            Mat result = Detection0.DetectMask(image);
+                            Bitmap bitmap = BitmapConverter.ToBitmap(result);
+                            cctvMonitor0.Image = bitmap;
+                        }
                         if (Cv2.WaitKey(1) >= 27) break;
                     }
                 }
@@ -165,78 +167,82 @@ namespace CCTVMaskDetection
                 }
             }
 
-        }
+        }*/
         private void connect_btn0_Click(object sender, EventArgs e)
         {
-            //VideoCapture videoCapture;
-            /*
             if (chk_wc0.Checked == true)
             {
-                videoCapture = new VideoCapture(WEBaddr0);
+                videoCapture0 = new VideoCapture(WEBaddr0);
             }
             else
             {
-                videoCapture = new VideoCapture(RtspAddr0);
-            }*/
-            //videoCapture = new VideoCapture(0);
-            using (Mat image = new Mat())
+                videoCapture0 = new VideoCapture(RtspAddr0);
+            }
+
+            using (Mat image0 = new Mat())
             {
-                //if (IOButton0.Text.Equals("ON"))
-               // {
-                    //IOButton0.Text = "OFF"; 
-                    while (true)
+                if (IOButton0.Text.Equals("ON"))
+                {
+                    IOButton0.Text = "OFF";
+                    while (IOButton0.Text.Equals("OFF"))
                     {
-                        if (!videoCapture0.Read(image))
+                        if (!videoCapture0.Read(image0))
                         {
-                            Cv2.WaitKey();
+                            continue;
+                            //Cv2.WaitKey();
                         }
-                        if (image.Size().Width > 0 && image.Size().Height > 0)
+                        if (image0.Size().Width > 0 && image0.Size().Height > 0)
                         {
-                            //Mat result = Detection0.DetectMask(image);
-                            Bitmap bitmap = BitmapConverter.ToBitmap(image);
+                            Mat frame = Detection0.DetectMask(image0);
+                            Bitmap bitmap = BitmapConverter.ToBitmap(frame);
                             cctvMonitor0.Image = bitmap;
                         }
-                            if (Cv2.WaitKey(1) >= 27) break;
+                        if (Cv2.WaitKey(1) >= 27) break;
                     }
-                //}
-                /*else
+                }
+                else if (IOButton0.Text.Equals("OFF"))
                 {
-                    videoCapture.Release();
+                    videoCapture0.Release();
                     IOButton0.Text = "ON";
-                }*/
+                }
             }
         }
         private void connect_btn1_Click(object sender, EventArgs e)
         {
-            //VideoCapture capture;
-            //capture = new VideoCapture(RtspAddr1);
-            //capture = new VideoCapture("rtsp://192.168.0.137/profile2/media.smp");
-            using (Mat image = new Mat())
+            if (chk_wc1.Checked == true)
             {
-                //if (IOButton1.Text.Equals("ON"))
-               // {
-                   // IOButton1.Text = "OFF";
-                    // while (IOButton1.Text.Equals("OFF"))
-                    while(true)
+                videoCapture1 = new VideoCapture(WEBaddr1);
+            }
+            else
+            {
+                videoCapture1 = new VideoCapture(RtspAddr1);
+            }
+            using (Mat image1 = new Mat())
+            {
+                if (IOButton1.Text.Equals("ON"))
+                {
+                    IOButton1.Text = "OFF";
+                    while (IOButton1.Text.Equals("OFF"))
                     {
-                        if (!videoCapture1.Read(image))
+                        if (!videoCapture1.Read(image1))
                         {
-                            Cv2.WaitKey();
+                            continue;
+                            //Cv2.WaitKey();
                         }
-                        if (image.Size().Width > 0 && image.Size().Height > 0)
+                        if (image1.Size().Width > 0 && image1.Size().Height > 0)
                         {
-                            Mat result = Detection1.DetectMask(image);
-                            Bitmap bitmap = BitmapConverter.ToBitmap(result);
+                            Mat frame = Detection1.DetectMask(image1);
+                            Bitmap bitmap = BitmapConverter.ToBitmap(frame);
                             cctvMonitor1.Image = bitmap;
                         }
                         if (Cv2.WaitKey(1) >= 27) break;
                     }
-               // }
-                /*else
+                }
+                else if (IOButton1.Text.Equals("OFF"))
                 {
-                    capture.Release();
+                    videoCapture1.Release();
                     IOButton1.Text = "ON";
-                }*/
+                }
             }
         }
 
@@ -249,51 +255,6 @@ namespace CCTVMaskDetection
 
         }
 
-        int fullview = 0;
-        private void Full_view_Click(object sender, EventArgs e)
-        {
-            fullview++;
-            switch (fullview)
-            {
-                case 1:
-                    cctvMonitor0.Visible = true;
-                    cctvMonitor1.Visible = false;
-
-
-
-                    break;
-                case 2:
-                    cctvMonitor0.Visible = false;
-                    cctvMonitor1.Visible = true;
-
-
-
-                    break;
-                case 3:
-                    cctvMonitor0.Visible = false;
-                    cctvMonitor1.Visible = false;
-
-
-                    break;
-                case 4:
-                    cctvMonitor0.Visible = false;
-                    cctvMonitor1.Visible = false;
-                    fullview = 0;
-
-
-                    break;
-            }
-
-
-
-        }
-
-        private void split_view_Click(object sender, EventArgs e)
-        {
-            cctvMonitor0.Visible = true;
-            cctvMonitor1.Visible = true;
-
-        }
 
         private void 프로그램종료ToolStripMenuItem_Click(object sender, EventArgs e)
         {
