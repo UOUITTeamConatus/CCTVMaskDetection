@@ -8,10 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using CCTVMaskDetection.Detection;
-using System.Threading;
 
 namespace CCTVMaskDetection
 {
@@ -19,10 +19,6 @@ namespace CCTVMaskDetection
     {
 
         #region 1. 필드 값들
-        private int wEBaddr0 = 999;
-        private int wEBaddr1 = 999;
-        private string rtspAddr0 = "";
-        private string rtspAddr1 = "";
         private Stopwatch stopWatch = new Stopwatch();
         private VideoWriter camera1_video;
         private double recordSpeed = 0.0;
@@ -30,14 +26,16 @@ namespace CCTVMaskDetection
         //private Detection detection;
         private Detection.Detection Detection0;
         private Detection.Detection Detection1;
-        private VideoCapture videoCapture0;
-        private VideoCapture videoCapture1;
+        VideoCapture[] videoCapture = new VideoCapture[camera_count]; //cam스트리밍용
+        VideoWriter[] videoWriter = new VideoWriter[camera_count];
+        const int camera_count = 2;
+        public int[] webAddr = new int[camera_count];
+        public string[] rtspAddr = new string[camera_count];
+        Mat[] image = new Mat[camera_count];
+        System.Windows.Forms.Timer[] cam_timer = new System.Windows.Forms.Timer[camera_count];
+        DateTime[] cam_watch = new DateTime[camera_count];
         #endregion
         #region 2. Getter Setter
-        public int WEBaddr0 { get => wEBaddr0; set => wEBaddr0 = value; }
-        public int WEBaddr1 { get => wEBaddr1; set => wEBaddr1 = value; }
-        public string RtspAddr0 { get => rtspAddr0; set => rtspAddr0 = value; }
-        public string RtspAddr1 { get => rtspAddr1; set => rtspAddr1 = value; }
         public Stopwatch StopWatch { get => stopWatch; set => stopWatch = value; }
         public VideoWriter Camera1_video { get => camera1_video; set => camera1_video = value; }
         public double RecordSpeed { get => recordSpeed; set => recordSpeed = value; }
@@ -47,6 +45,7 @@ namespace CCTVMaskDetection
         #region 3. BackgroundWorkers
         LoadingWindow loadingWindow = new LoadingWindow();
         BackgroundWorker bgWorker = new BackgroundWorker();
+        Thread camera_load_thread;
 
         #endregion
 
@@ -61,9 +60,8 @@ namespace CCTVMaskDetection
         {
             Detection0 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
             Detection1 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
-            videoCapture0 = new VideoCapture(0);
-            videoCapture1 = new VideoCapture("rtsp://192.168.0.137/profile2/media.smp");
-            //Thread.Sleep(5000);
+            cam_timer[0] = timer1;
+            //cam_timer[1] = timer2;
         }
         void detectionLoadingComplete()
         {
@@ -89,45 +87,53 @@ namespace CCTVMaskDetection
                 Path = savePath.Text + "\\";
             }
         }    
-        private void pathSaveBtn_0_Click(object sender, EventArgs e)
+        private void addrSaveBtn_0_Click(object sender, EventArgs e)
         {
-            if(chk_wc0.Checked == true)
+
+            if (camera0_addr.Text != "")
             {
-                int ch = Convert.ToInt32(camera1_add.Text);
-                WEBaddr0 = ch;
-                camera1_add.Text = string.Empty;
+                if (chk_wc0.Checked == true)
+                {
+                    int ch = Convert.ToInt32(camera0_addr.Text);              
+                    webAddr[0] = ch;
+                }
+                else if (chk_Ip0.Checked == true)
+                {
+                    rtspAddr[0] = camera0_addr.Text;
+                    camera_list.Items.Add(camera0_addr.Text);            
+                }
+                ListViewItem lvi = new ListViewItem();
+                lvi.Text = camera0_addr.Text;
+                lvi.SubItems.Add("-");
+                camera_list.Items.Add(lvi);
+                camera0_addr.Text = string.Empty;
             }
-            else if(chk_Ip0.Checked == true)
+
+        }
+
+        private void addrSaveBtn_1_Click(object sender, EventArgs e)
+        {
+
+            if (camera1_addr.Text != "")
             {
-                RtspAddr0 = camera1_add.Text;
-                camera1_add.Text = string.Empty;
+                if (chk_wc1.Checked == true)
+                {
+                    int ch = Convert.ToInt32(camera1_addr.Text);
+                    webAddr[1] = ch;
+                }
+                else if (chk_Ip1.Checked == true)
+                {
+                    rtspAddr[1] = camera1_addr.Text;
+                    camera_list.Items.Add(camera1_addr.Text);
+                }
+                ListViewItem lvi = new ListViewItem();
+                lvi.Text = camera1_addr.Text;
+                lvi.SubItems.Add("-");
+                camera_list.Items.Add(lvi);
+                camera1_addr.Text = string.Empty;
             }
         }
 
-        private void pathSaveBtn_1_Click(object sender, EventArgs e)
-        {
-            if(chk_wc1.Checked == true)
-            {
-                int ch = Convert.ToInt32(camera2_add.Text);
-                WEBaddr1 = ch;
-                camera2_add.Text = string.Empty;
-            }
-            else if(chk_Ip1.Checked == true)
-            {
-                RtspAddr1 = camera2_add.Text;
-                camera2_add.Text = string.Empty;
-            }
-        }
-        void LoadVideoCapture0Web(object sender, DoWorkEventArgs e)
-        {
-            videoCapture0 = new VideoCapture(WEBaddr0);
-            //Thread.Sleep(5000);
-        } 
-        void LoadVideoCapture0ipAddr(object sender, DoWorkEventArgs e)
-        {
-            videoCapture0 = new VideoCapture(RtspAddr0);
-            //Thread.Sleep(5000);
-        }
         /*
         void RunCamera0()
         {
@@ -170,15 +176,7 @@ namespace CCTVMaskDetection
         }*/
         private void connect_btn0_Click(object sender, EventArgs e)
         {
-            if (chk_wc0.Checked == true)
-            {
-                videoCapture0 = new VideoCapture(WEBaddr0);
-            }
-            else
-            {
-                videoCapture0 = new VideoCapture(RtspAddr0);
-            }
-
+   
             using (Mat image0 = new Mat())
             {
                 if (IOButton0.Text.Equals("ON"))
@@ -186,15 +184,15 @@ namespace CCTVMaskDetection
                     IOButton0.Text = "OFF";
                     while (IOButton0.Text.Equals("OFF"))
                     {
-                        if (!videoCapture0.Read(image0))
+                        if (!videoCapture[0].Read(image0))
                         {
                             continue;
                             //Cv2.WaitKey();
                         }
                         if (image0.Size().Width > 0 && image0.Size().Height > 0)
                         {
-                            Mat frame = Detection0.DetectMask(image0);
-                            Bitmap bitmap = BitmapConverter.ToBitmap(frame);
+                            //Mat frame = Detection0.DetectMask(image0);
+                            Bitmap bitmap = BitmapConverter.ToBitmap(image0);
                             cctvMonitor0.Image = bitmap;
                         }
                         if (Cv2.WaitKey(1) >= 27) break;
@@ -202,21 +200,13 @@ namespace CCTVMaskDetection
                 }
                 else if (IOButton0.Text.Equals("OFF"))
                 {
-                    videoCapture0.Release();
+                    videoCapture[0].Release();
                     IOButton0.Text = "ON";
                 }
             }
         }
         private void connect_btn1_Click(object sender, EventArgs e)
         {
-            if (chk_wc1.Checked == true)
-            {
-                videoCapture1 = new VideoCapture(WEBaddr1);
-            }
-            else
-            {
-                videoCapture1 = new VideoCapture(RtspAddr1);
-            }
             using (Mat image1 = new Mat())
             {
                 if (IOButton1.Text.Equals("ON"))
@@ -224,15 +214,15 @@ namespace CCTVMaskDetection
                     IOButton1.Text = "OFF";
                     while (IOButton1.Text.Equals("OFF"))
                     {
-                        if (!videoCapture1.Read(image1))
+                        if (!videoCapture[1].Read(image1))
                         {
                             continue;
                             //Cv2.WaitKey();
                         }
                         if (image1.Size().Width > 0 && image1.Size().Height > 0)
                         {
-                            Mat frame = Detection1.DetectMask(image1);
-                            Bitmap bitmap = BitmapConverter.ToBitmap(frame);
+                            //Mat frame = Detection1.DetectMask(image1);
+                            Bitmap bitmap = BitmapConverter.ToBitmap(image1);
                             cctvMonitor1.Image = bitmap;
                         }
                         if (Cv2.WaitKey(1) >= 27) break;
@@ -240,7 +230,7 @@ namespace CCTVMaskDetection
                 }
                 else if (IOButton1.Text.Equals("OFF"))
                 {
-                    videoCapture1.Release();
+                    videoCapture[1].Release();
                     IOButton1.Text = "ON";
                 }
             }
@@ -270,5 +260,97 @@ namespace CCTVMaskDetection
             credit.Show();
         }
 
+        private void connect_check_Click(object sender, EventArgs e)
+        {
+            camera_load_thread = new Thread(new ThreadStart(camera_load));
+            camera_load_thread.Start();
+        }
+
+        private void camera_load()
+        {
+
+            for (int i = 0; i < camera_list.Items.Count; i++)
+            {
+                videoCapture[i] = new VideoCapture();
+                videoWriter[i] = new VideoWriter();
+
+                try
+                {
+                    if (chk_wc0.Checked == true)
+                    {
+                        videoCapture[0].Open(webAddr[0]);                
+                    }
+                    else
+                    {
+                        videoCapture[0].Open(rtspAddr[0]);                 
+                    }
+
+                    if (chk_wc1.Checked == true)
+                    {
+                        videoCapture[1].Open(webAddr[1]);
+                    }
+                    else
+                    {
+                        videoCapture[1].Open(rtspAddr[1]);
+                    }                             
+
+                }
+                catch (Exception e)
+                {
+                    
+                }
+
+                if (videoCapture[i].IsOpened())
+                {
+                    //카메라 리스트 업데이트
+                    camera_list.Items[i].SubItems[1].Text = "연결 성공";
+                    if (i==0)
+                        camera0_consol.AppendText("연결 성공");
+                    else if (i==1)
+                        camera1_consol.AppendText("연결 성공");
+                }
+                else
+                {
+                    camera_list.Items[i].SubItems[1].Text = "연결 실패";
+                }
+
+
+            }
+
+        }
+
+        private void test_Click(object sender, EventArgs e)
+        {
+
+            if (videoCapture[0].IsOpened())
+            {
+               
+                //타이머가 멈춰있으면...
+                if (cam_timer[0].Enabled == false)
+                {
+                    //작동시키겠다..!
+                    cam_timer[0].Start();
+                    cam_watch[0] = DateTime.Now;
+                }
+            }
+            else
+            {
+                //경고 메시지 
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e) //카메라 동시 구동을 위한 타이머 
+        {
+            int camera_id = 0;
+            image[camera_id] = new Mat();
+            if (videoCapture[0].Read(image[0]))
+            {
+                //Mat frame = Detection0.DetectMask(image[0]);
+                Bitmap bitmap = BitmapConverter.ToBitmap(image[0]);
+                cctvMonitor0.Image = bitmap;
+            }
+    
+        }
     }
 }
+
