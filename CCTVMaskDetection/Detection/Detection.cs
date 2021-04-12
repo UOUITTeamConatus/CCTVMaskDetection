@@ -53,8 +53,6 @@ namespace CCTVMaskDetection.Detection
                 int x2 = (int)(w * dets.At<float>(0, 0, i, 5));
                 int y2 = (int)(h * dets.At<float>(0, 0, i, 6));
 
-                Point P1 = new Point(x1, y1);
-                Point P2 = new Point(x2, y2);
                 try
                 {
                     Mat face = result.SubMat(new Rect(x1, y1, x2 - x1, y2 - y1));
@@ -96,8 +94,6 @@ namespace CCTVMaskDetection.Detection
                         label = "No Mask " + string.Format("{0:F2}", NoMaskRate) + "%";
                     }
                     Cv2.Rectangle(result, new Rect(x1, y1, x2 - x1, y2 - y1), color, 2);
-                    Cv2.Line(result, P1, P1, new Scalar(255, 255, 255), 10);
-                    Cv2.Line(result, P2, P2, new Scalar(0, 0, 0), 10);
                     Size textSize = Cv2.GetTextSize("face", HersheyFonts.HersheySimplex, 0.5, 1, out var baseline);
                     Cv2.PutText(result, label, new Point(x1, y1), HersheyFonts.HersheySimplex, 0.5, color);
                 }
