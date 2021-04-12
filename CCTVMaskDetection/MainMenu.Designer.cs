@@ -96,6 +96,7 @@ namespace CCTVMaskDetection
             this.만든사람들ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.backUpBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -525,6 +526,7 @@ namespace CCTVMaskDetection
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.backUpBtn);
             this.groupBox6.Controls.Add(this.test1);
             this.groupBox6.Controls.Add(this.test0);
             this.groupBox6.Controls.Add(this.connect_check);
@@ -917,6 +919,16 @@ namespace CCTVMaskDetection
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // backUpBtn
+            // 
+            this.backUpBtn.Location = new System.Drawing.Point(348, 455);
+            this.backUpBtn.Name = "backUpBtn";
+            this.backUpBtn.Size = new System.Drawing.Size(91, 28);
+            this.backUpBtn.TabIndex = 26;
+            this.backUpBtn.Text = "Back up";
+            this.backUpBtn.UseVisualStyleBackColor = true;
+            this.backUpBtn.Click += new System.EventHandler(this.backUpBtn_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -1042,6 +1054,7 @@ namespace CCTVMaskDetection
         private System.Windows.Forms.Button test0;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button test1;
+        private System.Windows.Forms.Button backUpBtn;
     }
 }
 

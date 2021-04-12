@@ -108,6 +108,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="INI.cs" />
     <Compile Include="credit.cs">
       <SubType>Form</SubType>
     </Compile>

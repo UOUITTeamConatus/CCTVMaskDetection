@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,6 +49,8 @@ namespace CCTVMaskDetection
 
         #endregion
 
+        INI ini = new INI(); //ini 파일 생성 클래스 
+
         //public string Path = "";
         public MainMenu()
         {
@@ -82,33 +85,49 @@ namespace CCTVMaskDetection
                 savePath.Text = fbd.SelectedPath;
                 Path = savePath.Text + "\\";
             }
-        }    
+        }
         private void addrSaveBtn_0_Click(object sender, EventArgs e)
         {
+
+            FileInfo IniDel = new FileInfo(System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+            if (IniDel.Exists)   //ini 파일 존재 확인
+            {
+                IniDel.Delete();   //기존 ini 파일 삭제
+            }
 
             if (camera0_addr.Text != "")
             {
                 if (chk_wc0.Checked == true)
                 {
-                    int ch = Convert.ToInt32(camera0_addr.Text);              
+                    ini.WriteValue("CAMinfor", "Address", camera0_addr.Text, System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini"); //ini 파일 생성, 기록
+                    ini.WriteValue2("TYPE", "type", "web", System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+
+                    int ch = Convert.ToInt32(camera0_addr.Text);
                     webAddr[0] = ch;
                 }
                 else if (chk_Ip0.Checked == true)
                 {
+                    ini.WriteValue("CAMinfor", "Address", camera0_addr.Text, System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+                    ini.WriteValue2("TYPE", "type", "ip", System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+
                     rtspAddr[0] = camera0_addr.Text;
-                    //camera_list.Items.Add(camera0_addr.Text);         
                 }
                 ListViewItem lvi = new ListViewItem();
                 lvi.Text = camera0_addr.Text;
                 lvi.SubItems.Add("-");
                 camera_list.Items.Add(lvi);
                 camera0_addr.Text = string.Empty;
-            }
 
+            }
         }
 
         private void addrSaveBtn_1_Click(object sender, EventArgs e)
         {
+            FileInfo IniDel = new FileInfo(System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+            if (IniDel.Exists)   //ini 파일 존재 확인
+            {
+                IniDel.Delete();   //기존 ini 파일 삭제
+            }
 
             if (camera1_addr.Text != "")
             {
@@ -116,11 +135,16 @@ namespace CCTVMaskDetection
                 {
                     int ch = Convert.ToInt32(camera1_addr.Text);
                     webAddr[1] = ch;
+
+                    ini.WriteValue("CAMinfor", "Address", camera1_addr.Text, System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+                    ini.WriteValue2("TYPE", "type", "web", System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
                 }
                 else if (chk_Ip1.Checked == true)
                 {
+                    ini.WriteValue("CAMinfor", "Address", camera1_addr.Text, System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+                    ini.WriteValue2("TYPE", "type", "ip", System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+
                     rtspAddr[1] = camera1_addr.Text;
-                    //camera_list.Items.Add(camera1_addr.Text);
                 }
                 ListViewItem lvi = new ListViewItem();
                 lvi.Text = camera1_addr.Text;
@@ -130,47 +154,47 @@ namespace CCTVMaskDetection
             }
         }
 
-        /*
-        void RunCamera0()
-        {
-            VideoCapture videoCapture;
-            if (chk_wc0.Checked == true)
+            /*
+            void RunCamera0()
             {
-                videoCapture = new VideoCapture(WEBaddr0);
-            }
-            else
-            {
-                videoCapture = new VideoCapture(RtspAddr0);
-            }
-            using (Mat image = new Mat())
-            {
-                if (IOButton0.Text.Equals("ON"))
+                VideoCapture videoCapture;
+                if (chk_wc0.Checked == true)
                 {
-                    IOButton0.Text = "OFF";
-                    while (IOButton0.Text.Equals("OFF"))
-                    {
-                        if (!videoCapture.Read(image))
-                        {
-                            Cv2.WaitKey();
-                        }
-                        if (image.Size().Width > 0 && image.Size().Height > 0)
-                        {
-                            Mat result = Detection0.DetectMask(image);
-                            Bitmap bitmap = BitmapConverter.ToBitmap(result);
-                            cctvMonitor0.Image = bitmap;
-                        }
-                        if (Cv2.WaitKey(1) >= 27) break;
-                    }
+                    videoCapture = new VideoCapture(WEBaddr0);
                 }
                 else
                 {
-                    videoCapture.Release();
-                    IOButton0.Text = "ON";
+                    videoCapture = new VideoCapture(RtspAddr0);
                 }
-            }
+                using (Mat image = new Mat())
+                {
+                    if (IOButton0.Text.Equals("ON"))
+                    {
+                        IOButton0.Text = "OFF";
+                        while (IOButton0.Text.Equals("OFF"))
+                        {
+                            if (!videoCapture.Read(image))
+                            {
+                                Cv2.WaitKey();
+                            }
+                            if (image.Size().Width > 0 && image.Size().Height > 0)
+                            {
+                                Mat result = Detection0.DetectMask(image);
+                                Bitmap bitmap = BitmapConverter.ToBitmap(result);
+                                cctvMonitor0.Image = bitmap;
+                            }
+                            if (Cv2.WaitKey(1) >= 27) break;
+                        }
+                    }
+                    else
+                    {
+                        videoCapture.Release();
+                        IOButton0.Text = "ON";
+                    }
+                }
 
-        }*/
-        private void IOButton0_Click(object sender, EventArgs e)
+            }*/
+            private void IOButton0_Click(object sender, EventArgs e)
         {
             using (Mat image0 = new Mat())
             {
@@ -369,6 +393,63 @@ namespace CCTVMaskDetection
                 //경고 메시지 
             }
 
+        }
+
+        private void backUpBtn_Click(object sender, EventArgs e)
+        {
+            // 1번 카메라 백업
+            FileInfo filecheck0 = new FileInfo(System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+            if (filecheck0.Exists)
+            {
+                string type = ini.ReadValue2("TYPE", "type", System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+
+                if (type == "web")
+                {
+                    chk_wc0.PerformClick();
+
+                    string webaddr = ini.ReadValue("CAMinfor", "Address", System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+
+                    camera0_addr.Text = webaddr;
+                }
+                else
+                {
+                    chk_Ip0.PerformClick();
+
+                    string rtspaddr = ini.ReadValue("CAMinfor", "Address", System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+
+                    camera0_addr.Text = rtspaddr;
+                }
+                addrSaveBtn_0.PerformClick();
+            }
+
+            // 2번 카메라 백업
+            FileInfo filecheck1 = new FileInfo(System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+            if (filecheck1.Exists)
+            {
+                string type = ini.ReadValue2("TYPE", "type", System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+
+                if (type == "web")
+                {
+                    chk_wc1.PerformClick();
+
+                    string webaddr = ini.ReadValue("CAMinfor", "Address", System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+
+                    camera1_addr.Text = webaddr;
+                }
+                else
+                {
+                    chk_Ip1.PerformClick();
+
+                    string rtspaddr = ini.ReadValue("CAMinfor", "Address", System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+
+                    camera1_addr.Text = rtspaddr;
+                }
+                addrSaveBtn_1.PerformClick();
+            }
+            connect_check.PerformClick();
+
+            IOButton0.PerformClick();
+            IOButton1.PerformClick();
         }
     }
 }
