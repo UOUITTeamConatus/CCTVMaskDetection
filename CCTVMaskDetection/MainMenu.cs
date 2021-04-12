@@ -24,8 +24,8 @@ namespace CCTVMaskDetection
         private double recordSpeed = 0.0;
         private string path = "";
         //private Detection detection;
-        private Detection.Detection Detection0;
-        private Detection.Detection Detection1;
+        private Detection.Detection Detection0 =  new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
+        //private Detection.Detection Detection1;
         VideoCapture[] videoCapture = new VideoCapture[camera_count]; 
         VideoWriter[] videoWriter = new VideoWriter[camera_count];
         const int camera_count = 2;
@@ -43,7 +43,6 @@ namespace CCTVMaskDetection
         //public bool Flag { get => flag; set => flag = value; }
         #endregion
         #region 3. BackgroundWorkers
-        LoadingWindow loadingWindow = new LoadingWindow();
         BackgroundWorker bgWorker = new BackgroundWorker();
         Thread camera_load_thread;
 
@@ -53,25 +52,20 @@ namespace CCTVMaskDetection
         public MainMenu()
         {
             InitializeComponent();
-            bgWorker.DoWork += (sender, args) => detectionLoading();
-            bgWorker.RunWorkerCompleted += (sender, args) => detectionLoadingComplete();
+            //bgWorker.DoWork += (sender, args) => detectionLoading();
+            //bgWorker.RunWorkerCompleted += (sender, args) => detectionLoadingComplete();
         }
         void detectionLoading()
         {
-            Detection0 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
-            Detection1 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
-            cam_timer[0] = timer1;
+            //Detection0 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
+            //Detection1 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
+            //cam_timer[0] = timer1;
             //cam_timer[1] = timer2;
         }
         void detectionLoadingComplete()
         {
-            loadingWindow.Close();
+            //loadingWindow.Close();
         } 
-        private void MainMenu_Load(object sender, EventArgs e)
-        {
-            bgWorker.RunWorkerAsync();
-            loadingWindow.ShowDialog();
-        }
 
         private void ON_btn_Click(object sender, EventArgs e)
         {
@@ -190,8 +184,8 @@ namespace CCTVMaskDetection
                         }
                         if (image0.Size().Width > 0 && image0.Size().Height > 0)
                         {
-                            //Mat frame = Detection0.DetectMask(image0);
-                            Bitmap bitmap = BitmapConverter.ToBitmap(image0);
+                            Mat frame = Detection0.DetectMask(image0);
+                            Bitmap bitmap = BitmapConverter.ToBitmap(frame);
 
                             cctvMonitor0.Image = bitmap;
                         }
