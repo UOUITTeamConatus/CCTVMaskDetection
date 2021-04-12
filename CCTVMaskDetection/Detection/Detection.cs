@@ -104,7 +104,7 @@ namespace CCTVMaskDetection.Detection
                 catch (OpenCVException E)
                 {
                     Console.WriteLine(E.Message);
-                    return result;
+                    //return result;
                 }
             }
             return result;
