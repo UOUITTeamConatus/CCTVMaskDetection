@@ -62,7 +62,8 @@ namespace CCTVMaskDetection
             this.path_btn = new System.Windows.Forms.Button();
             this.savePath = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.test = new System.Windows.Forms.Button();
+            this.test1 = new System.Windows.Forms.Button();
+            this.test0 = new System.Windows.Forms.Button();
             this.connect_check = new System.Windows.Forms.Button();
             this.camera_list = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -524,7 +525,8 @@ namespace CCTVMaskDetection
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.test);
+            this.groupBox6.Controls.Add(this.test1);
+            this.groupBox6.Controls.Add(this.test0);
             this.groupBox6.Controls.Add(this.connect_check);
             this.groupBox6.Controls.Add(this.camera_list);
             this.groupBox6.Controls.Add(this.modeChg1);
@@ -540,20 +542,30 @@ namespace CCTVMaskDetection
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "장치 연결";
             // 
-            // test
+            // test1
             // 
-            this.test.Location = new System.Drawing.Point(219, 456);
-            this.test.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.test.Name = "test";
-            this.test.Size = new System.Drawing.Size(67, 29);
-            this.test.TabIndex = 24;
-            this.test.Text = "test";
-            this.test.UseVisualStyleBackColor = true;
-            this.test.Click += new System.EventHandler(this.test_Click);
+            this.test1.Location = new System.Drawing.Point(219, 454);
+            this.test1.Name = "test1";
+            this.test1.Size = new System.Drawing.Size(88, 29);
+            this.test1.TabIndex = 25;
+            this.test1.Text = "button3";
+            this.test1.UseVisualStyleBackColor = true;
+            this.test1.Click += new System.EventHandler(this.test1_Click);
+            // 
+            // test0
+            // 
+            this.test0.Location = new System.Drawing.Point(145, 454);
+            this.test0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.test0.Name = "test0";
+            this.test0.Size = new System.Drawing.Size(67, 29);
+            this.test0.TabIndex = 24;
+            this.test0.Text = "test";
+            this.test0.UseVisualStyleBackColor = true;
+            this.test0.Click += new System.EventHandler(this.test0_Click);
             // 
             // connect_check
             // 
-            this.connect_check.Location = new System.Drawing.Point(80, 455);
+            this.connect_check.Location = new System.Drawing.Point(16, 454);
             this.connect_check.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.connect_check.Name = "connect_check";
             this.connect_check.Size = new System.Drawing.Size(106, 29);
@@ -868,7 +880,6 @@ namespace CCTVMaskDetection
             this.설정ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1918, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
@@ -1028,8 +1039,9 @@ namespace CCTVMaskDetection
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Button connect_check;
-        private System.Windows.Forms.Button test;
+        private System.Windows.Forms.Button test0;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button test1;
     }
 }
 
