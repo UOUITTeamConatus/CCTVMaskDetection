@@ -24,24 +24,35 @@ namespace CCTVMaskDetection
         private VideoWriter camera1_video;
         private double recordSpeed = 0.0;
         private string path = "";
-        //private Detection detection;
-        private Detection.Detection Detection0 =  new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
-        //private Detection.Detection Detection1;
+        //카메라 녹화 관련 값들
+        
+        private Detection.Detection Detection0 =  new Detection.Detection();
+        //Mask Detector 메서드 -> 해당 클래스에 모두 넣으면 코드가 복잡해지므로 분리
+
         VideoCapture[] videoCapture = new VideoCapture[camera_count]; 
         VideoWriter[] videoWriter = new VideoWriter[camera_count];
+        //VideoCapture -> 0번 화면 1번화면 카메라 영상
+        //VideoWriter -> 영상 저장에 필요한 객체
+
+        INI ini = new INI(); //ini 파일 생성 객체
+        
         const int camera_count = 2;
+        //카매라 개수는 2개
         public int[] webAddr = new int[camera_count];
         public string[] rtspAddr = new string[camera_count];
+        
         Mat[] image = new Mat[camera_count];
+        //PictureBox에 들어갈 Mat 2개
         System.Windows.Forms.Timer[] cam_timer = new System.Windows.Forms.Timer[camera_count];
+        //타이머
         DateTime[] cam_watch = new DateTime[camera_count];
+        //???
         #endregion
         #region 2. Getter Setter
         public Stopwatch StopWatch { get => stopWatch; set => stopWatch = value; }
         public VideoWriter Camera1_video { get => camera1_video; set => camera1_video = value; }
         public double RecordSpeed { get => recordSpeed; set => recordSpeed = value; }
         public string Path { get => path; set => path = value; }
-        //public bool Flag { get => flag; set => flag = value; }
         #endregion
         #region 3. BackgroundWorkers
         BackgroundWorker bgWorker = new BackgroundWorker();
@@ -49,28 +60,14 @@ namespace CCTVMaskDetection
 
         #endregion
 
-        INI ini = new INI(); //ini 파일 생성 클래스 
 
         //public string Path = "";
         public MainMenu()
         {
             InitializeComponent();
-            //bgWorker.DoWork += (sender, args) => detectionLoading();
-            //bgWorker.RunWorkerCompleted += (sender, args) => detectionLoadingComplete();
             cam_timer[0] = timer1;
             cam_timer[1] = timer2;
         }
-        void detectionLoading()
-        {
-            //Detection0 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
-            //Detection1 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
-            //cam_timer[-1] = timer1;
-            //cam_timer[0] = timer2;
-        }
-        void detectionLoadingComplete()
-        {
-            //loadingWindow.Close();
-        } 
 
         private void ON_btn_Click(object sender, EventArgs e)
         {
@@ -153,48 +150,7 @@ namespace CCTVMaskDetection
                 camera1_addr.Text = string.Empty;
             }
         }
-
-            /*
-            void RunCamera0()
-            {
-                VideoCapture videoCapture;
-                if (chk_wc0.Checked == true)
-                {
-                    videoCapture = new VideoCapture(WEBaddr0);
-                }
-                else
-                {
-                    videoCapture = new VideoCapture(RtspAddr0);
-                }
-                using (Mat image = new Mat())
-                {
-                    if (IOButton0.Text.Equals("ON"))
-                    {
-                        IOButton0.Text = "OFF";
-                        while (IOButton0.Text.Equals("OFF"))
-                        {
-                            if (!videoCapture.Read(image))
-                            {
-                                Cv2.WaitKey();
-                            }
-                            if (image.Size().Width > 0 && image.Size().Height > 0)
-                            {
-                                Mat result = Detection0.DetectMask(image);
-                                Bitmap bitmap = BitmapConverter.ToBitmap(result);
-                                cctvMonitor0.Image = bitmap;
-                            }
-                            if (Cv2.WaitKey(1) >= 27) break;
-                        }
-                    }
-                    else
-                    {
-                        videoCapture.Release();
-                        IOButton0.Text = "ON";
-                    }
-                }
-
-            }*/
-            private void IOButton0_Click(object sender, EventArgs e)
+        private void IOButton0_Click(object sender, EventArgs e)
         {
             using (Mat image0 = new Mat())
             {

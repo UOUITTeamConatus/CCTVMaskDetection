@@ -19,9 +19,9 @@ namespace CCTVMaskDetection.Detection
     public partial class Detection
     {
         #region 1. 필드
-        private Net _facenet;
-        private BaseModel _model;
-        private MobileNetV2 _mobilenetv2;
+        private Net _facenet = CvDnn.ReadNetFromCaffe(Program.PrototxtPath, Program.CaffemodelPath);
+        private BaseModel _model = BaseModel.LoadModel(Program.MaskdetectorPath);
+        private MobileNetV2 _mobilenetv2 = new MobileNetV2();
         //public string RTSPaddr = ""; // 실험에 사용한 IP카메라의 RTSP 프로토콜 주소
         #endregion
         #region 2. Getter Setter
@@ -29,12 +29,6 @@ namespace CCTVMaskDetection.Detection
         public BaseModel Model { get => _model; set => _model = value; }
         public MobileNetV2 Mobilenetv2 { get => _mobilenetv2; set => _mobilenetv2 = value; }
         #endregion
-        public Detection(string prototxtPath, string caffemodelPath, string maskdetectorPath)
-        {
-            Facenet = CvDnn.ReadNetFromCaffe(prototxtPath, caffemodelPath);
-            Model = BaseModel.LoadModel(maskdetectorPath);
-            Mobilenetv2 = new MobileNetV2();
-        }
         public Mat DetectMask(Mat frame)
         {
             Mat result = frame;

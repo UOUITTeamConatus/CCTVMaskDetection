@@ -149,6 +149,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="models\black.model" />
     <None Include="models\default.model" />
     <None Include="models\deploy.prototxt" />
