@@ -66,12 +66,6 @@ namespace CCTVMaskDetection
             cam_timer[0] = timer1;
             cam_timer[1] = timer2;
         }
-
-        private void ON_btn_Click(object sender, EventArgs e)
-        {
-            //CCTVMaskDetection.Properties.Resources.icon
-        }
-
         private void path_btn_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();    //저장경로 지정

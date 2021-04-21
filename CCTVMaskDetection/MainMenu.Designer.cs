@@ -89,7 +89,6 @@ namespace CCTVMaskDetection
             this.screen1_select_btn = new System.Windows.Forms.CheckBox();
             this.screen2 = new System.Windows.Forms.Label();
             this.screen1 = new System.Windows.Forms.Label();
-            this.ON_btn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,6 +96,7 @@ namespace CCTVMaskDetection
             this.만든사람들ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.ON_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -631,12 +631,12 @@ namespace CCTVMaskDetection
             // IOButton1
             // 
             this.IOButton1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.IOButton1.Location = new System.Drawing.Point(203, 99);
+            this.IOButton1.Image = global::CCTVMaskDetection.Properties.Resources.icons8_power_off_button_32;
+            this.IOButton1.Location = new System.Drawing.Point(273, 98);
             this.IOButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IOButton1.Name = "IOButton1";
             this.IOButton1.Size = new System.Drawing.Size(95, 41);
             this.IOButton1.TabIndex = 20;
-            this.IOButton1.Text = "ON";
             this.IOButton1.UseVisualStyleBackColor = true;
             this.IOButton1.Click += new System.EventHandler(this.IOButton1_Click);
             // 
@@ -717,12 +717,12 @@ namespace CCTVMaskDetection
             // IOButton0
             // 
             this.IOButton0.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.IOButton0.Location = new System.Drawing.Point(203, 86);
+            this.IOButton0.Image = global::CCTVMaskDetection.Properties.Resources.icons8_power_off_button_32;
+            this.IOButton0.Location = new System.Drawing.Point(273, 85);
             this.IOButton0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IOButton0.Name = "IOButton0";
             this.IOButton0.Size = new System.Drawing.Size(95, 41);
             this.IOButton0.TabIndex = 19;
-            this.IOButton0.Text = "ON";
             this.IOButton0.UseVisualStyleBackColor = true;
             this.IOButton0.Click += new System.EventHandler(this.IOButton0_Click);
             // 
@@ -755,7 +755,7 @@ namespace CCTVMaskDetection
             // addrSaveBtn_0
             // 
             this.addrSaveBtn_0.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.addrSaveBtn_0.Location = new System.Drawing.Point(346, 55);
+            this.addrSaveBtn_0.Location = new System.Drawing.Point(346, 53);
             this.addrSaveBtn_0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addrSaveBtn_0.Name = "addrSaveBtn_0";
             this.addrSaveBtn_0.Size = new System.Drawing.Size(67, 29);
@@ -867,18 +867,6 @@ namespace CCTVMaskDetection
             this.screen1.TabIndex = 5;
             this.screen1.Text = "화면 1";
             // 
-            // ON_btn
-            // 
-            this.ON_btn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ON_btn.Image = global::CCTVMaskDetection.Properties.Resources.icons8_power_off_button_32;
-            this.ON_btn.Location = new System.Drawing.Point(349, 4);
-            this.ON_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ON_btn.Name = "ON_btn";
-            this.ON_btn.Size = new System.Drawing.Size(125, 83);
-            this.ON_btn.TabIndex = 16;
-            this.ON_btn.UseVisualStyleBackColor = true;
-            this.ON_btn.Click += new System.EventHandler(this.ON_btn_Click);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
@@ -926,6 +914,17 @@ namespace CCTVMaskDetection
             // timer2
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // ON_btn
+            // 
+            this.ON_btn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ON_btn.Image = global::CCTVMaskDetection.Properties.Resources.icons8_power_off_button_32;
+            this.ON_btn.Location = new System.Drawing.Point(349, 4);
+            this.ON_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ON_btn.Name = "ON_btn";
+            this.ON_btn.Size = new System.Drawing.Size(125, 83);
+            this.ON_btn.TabIndex = 16;
+            this.ON_btn.UseVisualStyleBackColor = true;
             // 
             // MainMenu
             // 
@@ -1012,7 +1011,6 @@ namespace CCTVMaskDetection
         private System.Windows.Forms.Label screen2;
         private System.Windows.Forms.Label screen1;
         private System.Windows.Forms.TableLayoutPanel controlPanel1;
-        private System.Windows.Forms.Button ON_btn;
         private System.Windows.Forms.Label captureSelect;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
@@ -1053,6 +1051,7 @@ namespace CCTVMaskDetection
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button test1;
         private System.Windows.Forms.Button backUpBtn;
+        private System.Windows.Forms.Button ON_btn;
     }
 }
 
