@@ -59,8 +59,6 @@ namespace CCTVMaskDetection
         Thread camera_load_thread;
 
         #endregion
-
-
         //public string Path = "";
         public MainMenu()
         {
