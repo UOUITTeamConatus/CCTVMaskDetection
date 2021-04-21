@@ -212,14 +212,6 @@ namespace CCTVMaskDetection
             }
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
 
         private void 프로그램종료ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -404,8 +396,8 @@ namespace CCTVMaskDetection
             }
             connect_check.PerformClick();
 
-            IOButton0.PerformClick();
-            IOButton1.PerformClick();
+            //IOButton0.PerformClick();
+            //IOButton1.PerformClick();
         }
     }
 }
