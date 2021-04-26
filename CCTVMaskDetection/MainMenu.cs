@@ -61,7 +61,7 @@ namespace CCTVMaskDetection
             Detection0 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
             Detection1 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
             cam_timer[0] = timer1;
-            //cam_timer[1] = timer2;
+            cam_timer[1] = timer2;
         }
         void detectionLoadingComplete()
         {
@@ -99,8 +99,7 @@ namespace CCTVMaskDetection
                 }
                 else if (chk_Ip0.Checked == true)
                 {
-                    rtspAddr[0] = camera0_addr.Text;
-                    camera_list.Items.Add(camera0_addr.Text);            
+                    rtspAddr[0] = camera0_addr.Text;                
                 }
                 ListViewItem lvi = new ListViewItem();
                 lvi.Text = camera0_addr.Text;
@@ -354,6 +353,30 @@ namespace CCTVMaskDetection
                 //Mat frame = Detection0.DetectMask(image[0]);
                 Bitmap bitmap = BitmapConverter.ToBitmap(image[camera_id]);
                 cctvMonitor0.Image = bitmap;
+            }
+        }
+
+        private void screen0_select_btn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (screen0_select_btn.Checked == true)
+            {
+                cctvMonitor0.Visible = false;
+            }
+            else
+            {
+                cctvMonitor0.Visible = true;
+            }
+        }
+
+        private void screen1_select_btn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (screen1_select_btn.Checked == true)
+            {
+                cctvMonitor1.Visible = false;
+            }
+            else
+            {
+                cctvMonitor1.Visible = true;
             }
         }
     }
