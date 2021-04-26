@@ -191,6 +191,7 @@ namespace CCTVMaskDetection
                         {
                             //Mat frame = Detection0.DetectMask(image0);
                             Bitmap bitmap = BitmapConverter.ToBitmap(image0);
+
                             cctvMonitor0.Image = bitmap;
                         }
                         if (Cv2.WaitKey(1) >= 27) break;
