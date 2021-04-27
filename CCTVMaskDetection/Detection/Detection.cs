@@ -29,8 +29,17 @@ namespace CCTVMaskDetection.Detection
         public BaseModel Model { get => _model; set => _model = value; }
         public MobileNetV2 Mobilenetv2 { get => _mobilenetv2; set => _mobilenetv2 = value; }
         #endregion
+
+        public Detection(string prototxtPath, string caffemodelPath, string maskdetectorPath)
+        {
+            Facenet = CvDnn.ReadNetFromCaffe(prototxtPath, caffemodelPath);
+            Model = BaseModel.LoadModel(maskdetectorPath);
+            Mobilenetv2 = new MobileNetV2();
+        }
+
         public Mat DetectMask(Mat frame)
         {
+            string timenow;
             Mat result = frame;
             //우선 받아온 이미지 frame을 그대로 result로 복사
             Mat blob = CvDnn.BlobFromImage(result, 1, new OpenCvSharp.Size(300, 300), new OpenCvSharp.Scalar(104, 177, 123), false, false);
@@ -85,7 +94,7 @@ namespace CCTVMaskDetection.Detection
                     else
                     {
                         color = new Scalar(0, 0, 255);
-                        label = "No Mask " + string.Format("{0:F2}", NoMaskRate) + "%";
+                        label = "No Mask " + string.Format("{0:F2}", NoMaskRate) + "%";              
                     }
                     Cv2.Rectangle(result, new Rect(x1, y1, x2 - x1, y2 - y1), color, 2);
                     Size textSize = Cv2.GetTextSize("face", HersheyFonts.HersheySimplex, 0.5, 1, out var baseline);
@@ -94,9 +103,10 @@ namespace CCTVMaskDetection.Detection
                 catch (OpenCVException E)
                 {
                     Console.WriteLine(E.Message);
-                    //return result;
                 }
             }
+            timenow = DateTime.Now.ToString("yyyy-MM-dd-HH:mm:ss");
+            Cv2.PutText(result, timenow, new OpenCvSharp.Point(0, 20), HersheyFonts.HersheySimplex, 0.8, new OpenCvSharp.Scalar(0, 0, 0));
             return result;
         }
     }
