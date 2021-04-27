@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,12 +23,20 @@ namespace CCTVMaskDetection
         private Stopwatch stopWatch = new Stopwatch(); 
         private double recordSpeed = 0.0;
         private string path = "";
-        //private Detection detection;
-        private Detection.Detection Detection0;
-        private Detection.Detection Detection1;
+        //카메라 녹화 관련 값들
+        
+        private Detection.Detection Detection0 =  new Detection.Detection();
+        //Mask Detector 메서드 -> 해당 클래스에 모두 넣으면 코드가 복잡해지므로 분리
+
         VideoCapture[] videoCapture = new VideoCapture[camera_count]; 
         VideoWriter[] videoWriter = new VideoWriter[camera_count];
+        //VideoCapture -> 0번 화면 1번화면 카메라 영상
+        //VideoWriter -> 영상 저장에 필요한 객체
+
+        INI ini = new INI(); //ini 파일 생성 객체
+        
         const int camera_count = 2;
+
         public int[] webAddr = new int[camera_count];           //웹켐 장치 번호 
         public string[] rtspAddr = new string[camera_count];    //rtsp 주소 
         double[] counter = new double[camera_count];            //fps 측정용 
@@ -36,24 +45,26 @@ namespace CCTVMaskDetection
         double[] fps = new double[camera_count];
         Mat[] image = new Mat[camera_count];
         Bitmap[] bitmap = new Bitmap[camera_count]; 
+        
         System.Windows.Forms.Timer[] cam_timer = new System.Windows.Forms.Timer[camera_count];
+        //타이머
         DateTime[] cam_watch = new DateTime[camera_count];
+        //???
         #endregion
         #region 2. Getter Setter
         public Stopwatch StopWatch { get => stopWatch; set => stopWatch = value; }
         public string Path { get => path; set => path = value; }
         #endregion
         #region 3. BackgroundWorkers
-        LoadingWindow loadingWindow = new LoadingWindow();
         BackgroundWorker bgWorker = new BackgroundWorker();
         Thread camera_load_thread;
         Thread[] camera_thread = new Thread[camera_count];
         #endregion
-
         //public string Path = "";
         public MainMenu()
         {
             InitializeComponent();
+
             bgWorker.DoWork += (sender, args) => detectionLoading();
             bgWorker.RunWorkerCompleted += (sender, args) => detectionLoadingComplete();
         }
@@ -88,32 +99,51 @@ namespace CCTVMaskDetection
                 savePath.Text = fbd.SelectedPath;
                 Path = savePath.Text + "\\";
             }
-        }    
+        }
         private void addrSaveBtn_0_Click(object sender, EventArgs e)
         {
+
+            FileInfo IniDel = new FileInfo(System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+            if (IniDel.Exists)   //ini 파일 존재 확인
+            {
+                IniDel.Delete();   //기존 ini 파일 삭제
+            }
 
             if (camera0_addr.Text != "")
             {
                 if (chk_wc0.Checked == true)
                 {
+
+                    ini.WriteValue("CAMinfor", "Address", camera0_addr.Text, System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini"); //ini 파일 생성, 기록
+                    ini.WriteValue2("TYPE", "type", "web", System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+
                     int ch = Convert.ToInt32(camera0_addr.Text);
                     webAddr[0] = ch;
                 }
                 else if (chk_Ip0.Checked == true)
                 {
-                    rtspAddr[0] = camera0_addr.Text;                
+
+                    ini.WriteValue("CAMinfor", "Address", camera0_addr.Text, System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+                    ini.WriteValue2("TYPE", "type", "ip", System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+
+                    rtspAddr[0] = camera0_addr.Text;
                 }
                 ListViewItem lvi = new ListViewItem();
                 lvi.Text = camera0_addr.Text;
                 lvi.SubItems.Add("-");
                 camera_list.Items.Add(lvi);
                 camera0_addr.Text = string.Empty;
-            }
 
+            }
         }
 
         private void addrSaveBtn_1_Click(object sender, EventArgs e)
         {
+            FileInfo IniDel = new FileInfo(System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+            if (IniDel.Exists)   //ini 파일 존재 확인
+            {
+                IniDel.Delete();   //기존 ini 파일 삭제
+            }
 
             if (camera1_addr.Text != "")
             {
@@ -121,11 +151,16 @@ namespace CCTVMaskDetection
                 {
                     int ch = Convert.ToInt32(camera1_addr.Text);
                     webAddr[1] = ch;
+
+                    ini.WriteValue("CAMinfor", "Address", camera1_addr.Text, System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+                    ini.WriteValue2("TYPE", "type", "web", System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
                 }
                 else if (chk_Ip1.Checked == true)
                 {
+                    ini.WriteValue("CAMinfor", "Address", camera1_addr.Text, System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+                    ini.WriteValue2("TYPE", "type", "ip", System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+
                     rtspAddr[1] = camera1_addr.Text;
-                    camera_list.Items.Add(camera1_addr.Text);
                 }
                 ListViewItem lvi = new ListViewItem();
                 lvi.Text = camera1_addr.Text;
@@ -140,8 +175,7 @@ namespace CCTVMaskDetection
         {
             int camera_num = 0;
             camera_thread[camera_num] = new Thread(() => cam_thread(camera_num));
-            camera_thread[camera_num].Start();
-           
+            camera_thread[camera_num].Start(); 
         }
         private void IOButton1_Click(object sender, EventArgs e)
         {
@@ -149,17 +183,6 @@ namespace CCTVMaskDetection
             camera_thread[camera_num] = new Thread(() => cam_thread(camera_num));
             camera_thread[camera_num].Start();
         }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
         private void 프로그램종료ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("프로그램을 종료하시겠습니까?", "TeamConatus CCTV방역관제시스템", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -231,8 +254,6 @@ namespace CCTVMaskDetection
                 }
             }
         }
-
-      
 
         private void cam_thread(int camera_num) //카메라 동시 구동을 위한 스레드 
         {
@@ -355,6 +376,62 @@ namespace CCTVMaskDetection
             camera_list.Items.Clear();  //리스트 항목 모두 제거 
         }
 
+        private void backUpBtn_Click(object sender, EventArgs e)
+        {
+            // 1번 카메라 백업
+            FileInfo filecheck0 = new FileInfo(System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+            if (filecheck0.Exists)
+            {
+                string type = ini.ReadValue2("TYPE", "type", System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+
+                if (type == "web")
+                {
+                    chk_wc0.PerformClick();
+
+                    string webaddr = ini.ReadValue("CAMinfor", "Address", System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+
+                    camera0_addr.Text = webaddr;
+                }
+                else
+                {
+                    chk_Ip0.PerformClick();
+
+                    string rtspaddr = ini.ReadValue("CAMinfor", "Address", System.Windows.Forms.Application.StartupPath + "\\CAM_Log1.ini");
+
+                    camera0_addr.Text = rtspaddr;
+                }
+                addrSaveBtn_0.PerformClick();
+            }
+
+            // 2번 카메라 백업
+            FileInfo filecheck1 = new FileInfo(System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+            if (filecheck1.Exists)
+            {
+                string type = ini.ReadValue2("TYPE", "type", System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+
+                if (type == "web")
+                {
+                    chk_wc1.PerformClick();
+
+                    string webaddr = ini.ReadValue("CAMinfor", "Address", System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+
+                    camera1_addr.Text = webaddr;
+                }
+                else
+                {
+                    chk_Ip1.PerformClick();
+
+                    string rtspaddr = ini.ReadValue("CAMinfor", "Address", System.Windows.Forms.Application.StartupPath + "\\CAM_Log2.ini");
+
+                    camera1_addr.Text = rtspaddr;
+                }
+                addrSaveBtn_1.PerformClick();
+            }
+            connect_check.PerformClick();
+
+            //IOButton0.PerformClick();
+            //IOButton1.PerformClick();
+        }
     }
 }
 
