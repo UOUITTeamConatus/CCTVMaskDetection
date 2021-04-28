@@ -25,7 +25,7 @@ namespace CCTVMaskDetection
         private string path = "";
         //카메라 녹화 관련 값들
         
-        private Detection.Detection Detection0 =  new Detection.Detection();
+        private Detection.Detection Detection0 =  new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
         //Mask Detector 메서드 -> 해당 클래스에 모두 넣으면 코드가 복잡해지므로 분리
 
         VideoCapture[] videoCapture = new VideoCapture[camera_count]; 
@@ -65,24 +65,8 @@ namespace CCTVMaskDetection
         {
             InitializeComponent();
 
-            bgWorker.DoWork += (sender, args) => detectionLoading();
-            bgWorker.RunWorkerCompleted += (sender, args) => detectionLoadingComplete();
+            //bgWorker.DoWork += (sender, args) => detectionLoading();
         }
-        void detectionLoading()
-        {
-            Detection0 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
-            Detection1 = new Detection.Detection(Program.PrototxtPath, Program.CaffemodelPath, Program.MaskdetectorPath);
-        }
-        void detectionLoadingComplete()
-        {
-            loadingWindow.Close();
-        } 
-        private void MainMenu_Load(object sender, EventArgs e)
-        {
-            bgWorker.RunWorkerAsync();
-            loadingWindow.ShowDialog();
-        }
-
         private void Power_btn_Click(object sender, EventArgs e)    //이미지 캡쳐 중지 
         {
             for (int i = 0; i < camera_list.Items.Count; i++)
@@ -234,7 +218,7 @@ namespace CCTVMaskDetection
                 }
                 catch (Exception e)
                 {
-                    
+                        
                 }
 
                 if (videoCapture[i].IsOpened())

@@ -61,9 +61,6 @@ namespace CCTVMaskDetection
             this.savePath = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.connect_delete = new System.Windows.Forms.Button();
-            this.backUpBtn = new System.Windows.Forms.Button();
-            this.test1 = new System.Windows.Forms.Button();
-            this.test0 = new System.Windows.Forms.Button();
             this.connect_check = new System.Windows.Forms.Button();
             this.camera_list = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -92,7 +89,6 @@ namespace CCTVMaskDetection
             this.프로그램종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.만든사람들ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ON_btn = new System.Windows.Forms.Button();
 
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -425,52 +421,6 @@ namespace CCTVMaskDetection
             this.label2.Size = new System.Drawing.Size(72, 15);
             this.label2.TabIndex = 15;
             this.label2.Text = "화면 캡쳐";
-            // 
-            // screen2_cbtn
-            // 
-            this.screen2_cbtn.Appearance = System.Windows.Forms.Appearance.Button;
-            this.screen2_cbtn.AutoCheck = false;
-            this.screen2_cbtn.AutoSize = true;
-            this.screen2_cbtn.Image = global::CCTVMaskDetection.Properties.Resources.icons8_bullet_camera_32;
-            this.screen2_cbtn.Location = new System.Drawing.Point(213, 59);
-            this.screen2_cbtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.screen2_cbtn.Name = "screen2_cbtn";
-            this.screen2_cbtn.Size = new System.Drawing.Size(38, 38);
-            this.screen2_cbtn.TabIndex = 12;
-            this.screen2_cbtn.UseVisualStyleBackColor = true;
-            // 
-            // captureSelect
-            // 
-            this.captureSelect.AutoSize = true;
-            this.captureSelect.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.captureSelect.Location = new System.Drawing.Point(13, 59);
-            this.captureSelect.Name = "captureSelect";
-            this.captureSelect.Size = new System.Drawing.Size(117, 15);
-            this.captureSelect.TabIndex = 11;
-            this.captureSelect.Text = "캡쳐 화면 선택 :";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.elapsedTime);
-            this.groupBox3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.Location = new System.Drawing.Point(294, 59);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(152, 60);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "경과 시간";
-            // 
-            // elapsedTime
-            // 
-            this.elapsedTime.AutoSize = true;
-            this.elapsedTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.elapsedTime.Location = new System.Drawing.Point(38, 28);
-            this.elapsedTime.Name = "elapsedTime";
-            this.elapsedTime.Size = new System.Drawing.Size(88, 23);
-            this.elapsedTime.TabIndex = 0;
-            this.elapsedTime.Text = "00:00:00";
             // 
             // capture_cbtn
             // 
