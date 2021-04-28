@@ -108,35 +108,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="INI.cs" />
-    <Compile Include="credit.cs">
+    <Compile Include="Data\INI.cs" />
+    <Compile Include="Forms\credit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="credit.Designer.cs">
+    <Compile Include="Forms\credit.Designer.cs">
       <DependentUpon>credit.cs</DependentUpon>
     </Compile>
     <Compile Include="Detection\Detection.cs" />
-    <Compile Include="MainMenu.cs">
+    <Compile Include="Forms\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainMenu.Designer.cs">
+    <Compile Include="Forms\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoadingWindow.cs">
+    <Compile Include="Forms\LoadingWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoadingWindow.Designer.cs">
+    <Compile Include="Forms\LoadingWindow.Designer.cs">
       <DependentUpon>LoadingWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="credit.resx">
+    <EmbeddedResource Include="Forms\credit.resx">
       <DependentUpon>credit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoadingWindow.resx">
+    <EmbeddedResource Include="Forms\LoadingWindow.resx">
       <DependentUpon>LoadingWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainMenu.resx">
+    <EmbeddedResource Include="Forms\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
