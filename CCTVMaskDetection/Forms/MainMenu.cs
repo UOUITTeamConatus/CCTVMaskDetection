@@ -157,12 +157,20 @@ namespace CCTVMaskDetection
 
         private void IOButton0_Click(object sender, EventArgs e)
         {
+            if(IOButton0.Text == "ON")
+            {
+                IOButton0.Text = "OFF";
+            }
             int camera_num = 0;
             camera_thread[camera_num] = new Thread(() => cam_thread(camera_num));
             camera_thread[camera_num].Start(); 
         }
         private void IOButton1_Click(object sender, EventArgs e)
         {
+            if (IOButton1.Text == "ON")
+            {
+                IOButton1.Text = "OFF";
+            }
             int camera_num = 1;
             camera_thread[camera_num] = new Thread(() => cam_thread(camera_num));
             camera_thread[camera_num].Start();
