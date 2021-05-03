@@ -573,6 +573,7 @@ namespace CCTVMaskDetection
             this.IOButton1.Size = new System.Drawing.Size(66, 28);
             this.IOButton1.TabIndex = 20;
             this.IOButton1.Text = "ON";
+            this.IOButton1.Text = "on";
             this.IOButton1.UseVisualStyleBackColor = true;
             this.IOButton1.Click += new System.EventHandler(this.IOButton1_Click);
             // 
