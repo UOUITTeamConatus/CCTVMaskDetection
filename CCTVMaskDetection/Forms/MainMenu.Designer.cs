@@ -61,7 +61,6 @@ namespace CCTVMaskDetection
             this.savePath = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.connect_delete = new System.Windows.Forms.Button();
-            this.connect_check = new System.Windows.Forms.Button();
             this.camera_list = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -72,6 +71,7 @@ namespace CCTVMaskDetection
             this.addrSaveBtn_1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.camera1_addr = new System.Windows.Forms.TextBox();
+            this.connect_check = new System.Windows.Forms.Button();
             this.modeChg0 = new System.Windows.Forms.GroupBox();
             this.IOButton0 = new System.Windows.Forms.Button();
             this.chk_Ip0 = new System.Windows.Forms.RadioButton();
@@ -89,7 +89,6 @@ namespace CCTVMaskDetection
             this.프로그램종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.만든사람들ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -522,17 +521,6 @@ namespace CCTVMaskDetection
             this.connect_delete.UseVisualStyleBackColor = true;
             this.connect_delete.Click += new System.EventHandler(this.connect_delete_Click);
             // 
-            // connect_check
-            // 
-            this.connect_check.Location = new System.Drawing.Point(57, 189);
-            this.connect_check.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.connect_check.Name = "connect_check";
-            this.connect_check.Size = new System.Drawing.Size(126, 59);
-            this.connect_check.TabIndex = 23;
-            this.connect_check.Text = "카메라 연결";
-            this.connect_check.UseVisualStyleBackColor = true;
-            this.connect_check.Click += new System.EventHandler(this.connect_check_Click);
-            // 
             // camera_list
             // 
             this.camera_list.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -584,6 +572,7 @@ namespace CCTVMaskDetection
             this.IOButton1.Name = "IOButton1";
             this.IOButton1.Size = new System.Drawing.Size(66, 40);
             this.IOButton1.TabIndex = 20;
+            this.IOButton1.Text = "on";
             this.IOButton1.UseVisualStyleBackColor = true;
             this.IOButton1.Click += new System.EventHandler(this.IOButton1_Click);
             // 
@@ -643,6 +632,17 @@ namespace CCTVMaskDetection
             this.camera1_addr.Size = new System.Drawing.Size(269, 25);
             this.camera1_addr.TabIndex = 5;
             // 
+            // connect_check
+            // 
+            this.connect_check.Location = new System.Drawing.Point(57, 189);
+            this.connect_check.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.connect_check.Name = "connect_check";
+            this.connect_check.Size = new System.Drawing.Size(126, 59);
+            this.connect_check.TabIndex = 23;
+            this.connect_check.Text = "카메라 연결";
+            this.connect_check.UseVisualStyleBackColor = true;
+            this.connect_check.Click += new System.EventHandler(this.connect_check_Click);
+            // 
             // modeChg0
             // 
             this.modeChg0.Controls.Add(this.IOButton0);
@@ -669,6 +669,7 @@ namespace CCTVMaskDetection
             this.IOButton0.Name = "IOButton0";
             this.IOButton0.Size = new System.Drawing.Size(66, 40);
             this.IOButton0.TabIndex = 19;
+            this.IOButton0.Text = "on";
             this.IOButton0.UseVisualStyleBackColor = true;
             this.IOButton0.Click += new System.EventHandler(this.IOButton0_Click);
             // 
@@ -858,7 +859,6 @@ namespace CCTVMaskDetection
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(1916, 1025);
-
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Team Conatus 방역관제CCTV시스템";
