@@ -29,9 +29,10 @@ namespace CCTVMaskDetection.Detection
         public BaseModel Model { get => _model; set => _model = value; }
         public MobileNetV2 Mobilenetv2 { get => _mobilenetv2; set => _mobilenetv2 = value; }
         #endregion
-        public Mat DetectMask(Mat frame)
+        public (Mat, int) DetectMask(Mat frame, int num)
         {
             Mat result = frame;
+            int maskcnt = num;
             //우선 받아온 이미지 frame을 그대로 result로 복사
             Mat blob = CvDnn.BlobFromImage(result, 1, new OpenCvSharp.Size(300, 300), new OpenCvSharp.Scalar(104, 177, 123), false, false);
             Facenet.SetInput(blob, "data");
@@ -86,6 +87,7 @@ namespace CCTVMaskDetection.Detection
                     {
                         color = new Scalar(0, 0, 255);
                         label = "No Mask " + string.Format("{0:F2}", NoMaskRate) + "%";
+                        maskcnt++;
                     }
                     Cv2.Rectangle(result, new Rect(x1, y1, x2 - x1, y2 - y1), color, 2);
                     Size textSize = Cv2.GetTextSize("face", HersheyFonts.HersheySimplex, 0.5, 1, out var baseline);
@@ -97,7 +99,7 @@ namespace CCTVMaskDetection.Detection
                     //return result;
                 }
             }
-            return result;
+            return (result, maskcnt);
         }
     }
 }
