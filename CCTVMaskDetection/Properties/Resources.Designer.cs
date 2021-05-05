@@ -113,16 +113,6 @@ namespace CCTVMaskDetection.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_disconnected_321 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-disconnected-321", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
         internal static System.Drawing.Bitmap icons8_find_and_replace_26 {
             get {
                 object obj = ResourceManager.GetObject("icons8-find-and-replace-26", resourceCulture);
@@ -176,6 +166,36 @@ namespace CCTVMaskDetection.Properties {
         internal static System.Drawing.Bitmap icons8_screenshot_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-screenshot-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_shutdown_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-shutdown-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_shutdown_48__2_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-shutdown-48 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_stop_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-stop-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

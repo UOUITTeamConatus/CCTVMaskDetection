@@ -21,13 +21,14 @@ namespace CCTVMaskDetection
 
         #region 1. 필드 값들
         const int camera_count = 2;
-        private Stopwatch stopWatch = new Stopwatch();
-        private VideoWriter camera1_video;
-        private double recordSpeed = 0.0;
         private string path = "";
-        int[] count = new int[camera_count];
+
         //카메라 녹화 관련 값들
-        
+        double[] counter = new double[camera_count];            //fps 측정용 
+        double[] seconds = new double[camera_count];            //fps 측정용 
+        Stopwatch[] watch = new Stopwatch[camera_count];      //fps 측정용 
+        double[] fps = new double[camera_count];
+
         private Detection.Detection Detection0 =  new Detection.Detection();
         //Mask Detector 메서드 -> 해당 클래스에 모두 넣으면 코드가 복잡해지므로 분리
 
@@ -37,8 +38,11 @@ namespace CCTVMaskDetection
         //VideoWriter -> 영상 저장에 필요한 객체
 
         INI ini = new INI(); //ini 파일 생성 객체
-        
-        
+
+        int[] count = new int[camera_count];
+        int[] nocount = new int[camera_count];
+        //마스크,노마스크 수 저장 
+
         //카매라 개수는 2개
         public int[] webAddr = new int[camera_count];
         public string[] rtspAddr = new string[camera_count];
@@ -46,14 +50,10 @@ namespace CCTVMaskDetection
         Mat[] image = new Mat[camera_count];
         //PictureBox에 들어갈 Mat 2개
         System.Windows.Forms.Timer[] cam_timer = new System.Windows.Forms.Timer[camera_count];
-        //타이머
-        DateTime[] cam_watch = new DateTime[camera_count];
-        //???
+        //타이머1,2
+
         #endregion
         #region 2. Getter Setter
-        public Stopwatch StopWatch { get => stopWatch; set => stopWatch = value; }
-        public VideoWriter Camera1_video { get => camera1_video; set => camera1_video = value; }
-        public double RecordSpeed { get => recordSpeed; set => recordSpeed = value; }
         public string Path { get => path; set => path = value; }
         #endregion
         #region 3. BackgroundWorkers
@@ -61,12 +61,13 @@ namespace CCTVMaskDetection
         Thread camera_load_thread;
 
         #endregion
-        //public string Path = "";
         public MainMenu()
         {
             InitializeComponent();
             count[0] = 0;
             count[1] = 0;
+            nocount[0] = 0;
+            nocount[1] = 0;
             cam_timer[0] = timer1;
             cam_timer[1] = timer2;
         }
@@ -149,29 +150,44 @@ namespace CCTVMaskDetection
 
         private void IOButton0_Click(object sender, EventArgs e)
         {
-            if (videoCapture[0].IsOpened())
+            int camera_num = 0;
+            if (videoCapture[camera_num].IsOpened())
             {
-                if (cam_timer[0].Enabled == false)
+                if (cam_timer[camera_num].Enabled == false)
                 {
-                    cam_timer[0].Start();
-                    cam_watch[0] = DateTime.Now;
+                    IOButton0.Image = Properties.Resources.icons8_shutdown_48;
+                    watch[camera_num] = Stopwatch.StartNew();
+                    cam_timer[camera_num].Start();
+                }
+                else
+                {
+                    cam_timer[camera_num].Enabled = false;
+                    IOButton0.Image = Properties.Resources.icons8_shutdown_48__2_;
                 }
             }
             else
             {
-
+                
             }
-
         }
+
         private void IOButton1_Click(object sender, EventArgs e)
         {
-            if (videoCapture[1].IsOpened())
+            int camera_num = 1;
+            if (videoCapture[camera_num].IsOpened())
             {
-                if (cam_timer[1].Enabled == false)
+                if (cam_timer[camera_num].Enabled == false)
                 {
-                    cam_timer[1].Start();
-                    cam_watch[1] = DateTime.Now;
+                    IOButton1.Image = Properties.Resources.icons8_shutdown_48;                 
+                    watch[camera_num] = Stopwatch.StartNew();
+                    cam_timer[camera_num].Start();                
                 }
+                else
+                {
+                    cam_timer[camera_num].Enabled = false;
+                    IOButton1.Image = Properties.Resources.icons8_shutdown_48__2_;
+                }
+
             }
             else
             {
@@ -204,7 +220,6 @@ namespace CCTVMaskDetection
 
         private void camera_load()
         {
-
             for (int i = 0; i < camera_list.Items.Count; i++)
             {
                 videoCapture[i] = new VideoCapture();
@@ -254,46 +269,83 @@ namespace CCTVMaskDetection
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e) //카메라 동시 구동을 위한 타이머, 0번 카메라 
+        private void timer1_Tick(object sender, EventArgs e) //타이머, 0번 카메라 
         {
             int camera_num = 0;
             image[camera_num] = new Mat();
             if (videoCapture[camera_num].Read(image[camera_num]))
             {
-                (Mat frame, int nomask) = Detection0.DetectMask(image[camera_num], count[camera_num]);
+                counter[camera_num]++;
+                seconds[camera_num] = watch[camera_num].ElapsedMilliseconds / (double)1000;
+                fps[camera_num] = (counter[camera_num] / seconds[camera_num])*1.1;
+
+                (Mat frame, int mask, int nomask) = Detection0.DetectMask(image[camera_num], count[camera_num], nocount[camera_num]);          
                 Bitmap bitmap = BitmapConverter.ToBitmap(frame);
                 cctvMonitor0.Image = bitmap;
 
-                if (nomask != count[camera_num])
-                    Write_nomask_log(camera_num, count[camera_num]);
-                count[camera_num] = nomask;
+                if (nomask != count[camera_num])    //노마스크일 때만 로그를 출력하기 위해 현 카운트 값과 노마스크 수 값을 비교 
+                {
+                    Write_nomask_log(camera_num, mask, nomask);   //노마스크 로그 출력 
+                    count[camera_num] = 0;
+                }
 
-                if (capture_cbtn.Checked == true)   //캡쳐 버튼이 눌리면
+                if (capture_btn.Checked == true && camera0_select.Checked == true && camera1_select.Checked == false)   //캡쳐 버튼이 눌리면
                 {
                     Capture_image(frame, camera_num);
+                    capture_btn.Checked = false;
+                }
+
+                if (record_cbtn.Checked == true && camera0_select.Checked == true && camera1_select.Checked == false)   //녹화버튼이 눌리면 videowriter객체 생성 
+                {
+                    Creat_VideoWriter(camera_num, image[camera_num],fps[camera_num]);
+                    stop_cbtn.Image = Properties.Resources.icons8_stop_48;
+                    record_cbtn.Checked = false;    //비디오 객체 생성 분기 진입 해제를 위한 false 처리 
+                    stop_cbtn.Checked = true;       //stop 버튼을 true로 해줌으로서 비디오 녹화 시작 
+                }
+
+                if (stop_cbtn.Checked == true)  //녹화 중지 버튼이 눌리지 않는 한 계속 녹화
+                {
+                    videoWriter[camera_num].Write(image[camera_num]);
                 }
             }
         }
-
+        
         private void timer2_Tick(object sender, EventArgs e) // 1번 카메라 
         {
             int camera_num = 1;
             image[camera_num] = new Mat();
             if (videoCapture[camera_num].Read(image[camera_num]))
             {
-                (Mat frame, int nomask) = Detection0.DetectMask(image[camera_num], count[camera_num]);
+                counter[camera_num]++;
+                seconds[camera_num] = watch[camera_num].ElapsedMilliseconds / (double)1000;
+                fps[camera_num] = (counter[camera_num] / seconds[camera_num]) * 1.1;
+                //result 프레임과 마스크 착용 자 수, 마스크를 착용하지 않은 자 수를 반환 
+                (Mat frame, int mask, int nomask) = Detection0.DetectMask(image[camera_num], count[camera_num], nocount[camera_num]);         
                 Bitmap bitmap = BitmapConverter.ToBitmap(frame);
                 cctvMonitor1.Image = bitmap;
 
                 if (nomask != count[camera_num])
-                    Write_nomask_log(camera_num, count[camera_num]);
-                count[camera_num] = nomask;
+                    Write_nomask_log(camera_num, mask, nomask);   //노마스크 로그 출력 
+                    count[camera_num] = 0;
 
-                if (capture_cbtn.Checked == true)   //캡쳐 버튼이 눌리면
+                if (capture_btn.Checked == true && camera0_select.Checked == false && camera1_select.Checked == true)   //캡쳐 버튼이 눌리면
                 {
-                    Capture_image(frame, camera_num);
+                    Capture_image(frame, camera_num);   //이미지 캡쳐 및 저장
+                    capture_btn.Checked = false;
                 }
 
+                if (record_cbtn.Checked == true && camera0_select.Checked == false && camera1_select.Checked == true)   //녹화버튼이 눌리면 videowriter객체 생성 
+                {
+                    Creat_VideoWriter(camera_num, image[camera_num], fps[camera_num]);
+                    stop_cbtn.Image = Properties.Resources.icons8_stop_48;
+                    record_cbtn.Checked = false;    //비디오 객체 생성 분기 진입 해제를 위한 false 처리 
+                    stop_cbtn.Checked = true;       //stop 버튼을 true로 해줌으로서 비디오 녹화 시작 
+                }
+
+                if (stop_cbtn.Checked == true)  //녹화 중지 버튼이 눌리지 않는 한 계속 녹화
+                {
+                    videoWriter[camera_num].Write(image[camera_num]);
+                }
             }
         }
 
@@ -353,42 +405,71 @@ namespace CCTVMaskDetection
         }
 
 
-        private void Write_nomask_log(int camera_num, int maskcnt) //노마스크 탐지시 로그 출력을 위한 함수 
+        private void Write_nomask_log(int camera_num, int maskcnt, int nomaskcnt) //노마스크 탐지시 로그 출력을 위한 함수 
         {
             string date_time = DateTime.Now.ToString("yyyy년MM월dd일hh시mm분ss초");
 
             if (camera_num == 0)
             {
-                camera0_consol.AppendText("노마스크 탐지 : " + maskcnt + Environment.NewLine + "시각 : " + date_time + Environment.NewLine);
+                camera0_consol.AppendText("탐지된 인원 : " + (maskcnt + nomaskcnt) + " / " + "마스크 : " + maskcnt + " / " + " 노 마스크 : " + nomaskcnt + Environment.NewLine + "시각 : " + date_time + Environment.NewLine);
                 count[0] = 0;
             }
             else if (camera_num == 1)
             {
-                camera1_consol.AppendText("노마스크 탐지 : " + maskcnt + Environment.NewLine + "시각 : " + date_time + Environment.NewLine);
+                camera1_consol.AppendText("탐지된 인원 : " + (maskcnt + nomaskcnt) + " / " + "마스크 : " + maskcnt + " / " + " 노 마스크 : " + nomaskcnt + Environment.NewLine + "시각 : " + date_time + Environment.NewLine);
                 count[1] = 0;
             }
         }
 
-        private void Creat_VideoWriter(int camera_num) //비디오 녹화 객체 생성 
-        {
-
-
-        }
-
-        private void Capture_image(Mat image, int camera_num) //프레임 캡쳐 
+        private void Creat_VideoWriter(int camera_num, Mat image, double fps) //비디오 녹화 생성 
         {
             string date_time = DateTime.Now.ToString("yyyy년MM월dd일hh시mm분ss초");
-            Cv2.ImWrite(Path + date_time + camera_num + ".png", (image));  //파일 저장
+            videoWriter[camera_num].Open(Path + date_time + camera_num + ".avi", FourCC.XVID, fps, image.Size());
 
-            capture_cbtn.Checked = false;
+            if (camera_num == 0)
+                camera0_consol.AppendText("카메라 : " + camera_num + " / " + "녹화 시각 : " + date_time + " / " + "프레임 : " + fps + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
+            else if (camera_num == 1)
+                camera1_consol.AppendText("카메라 : " + camera_num + " / " + "녹화 시각 : " + date_time + " / " + "프레임 : " + fps + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
+        }
+
+        private void Capture_image(Mat image, int camera_num) //프레임 캡쳐 및 저장 
+        {
+            string date_time = DateTime.Now.ToString("yyyy년MM월dd일hh시mm분ss초");          
             if (camera_num == 0)
             {
-                camera0_consol.AppendText("캡처 저장 위치 : " + Path + Environment.NewLine + "캡처 시각 : " + date_time + Environment.NewLine + "캡처 카메라 : " + camera_num + Environment.NewLine);
+                camera0_consol.AppendText("카메라 : " + camera_num + " / " + "캡처 시각 : " + date_time + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
+                Cv2.ImWrite(Path + date_time + camera_num + ".png", (image)); 
             }
-            else
+            else if (camera_num == 1)
             {
-                camera1_consol.AppendText("캡처 저장 위치 : " + Path + Environment.NewLine + "캡처 시각 : " + date_time + Environment.NewLine + "캡처 카메라 : " + camera_num + Environment.NewLine);
+                camera1_consol.AppendText("카메라 : " + camera_num + " / " + "캡처 시각 : " + date_time + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
+                Cv2.ImWrite(Path + date_time + camera_num + ".png", (image)); 
+            }          
+        }
+
+        private void stop_cbtn_CheckedChanged(object sender, EventArgs e)      
+        {
+            if (stop_cbtn.Checked == false)
+            {
+                if (camera0_select.Checked == true && camera1_select.Checked == false)
+                {
+                    videoWriter[0].Release();    //동영상 녹화 중지 
+                    camera0_consol.AppendText("녹화 중지" + Environment.NewLine);
+
+                }
+                else if (camera0_select.Checked == false && camera1_select.Checked == true)
+                {
+                    videoWriter[1].Release();
+                    camera1_consol.AppendText("녹화 중지" + Environment.NewLine);
+
+                }
+                stop_cbtn.Image = Properties.Resources.icons8_stop_squared_32;
             }
+        }
+
+        private void list_reset_Click(object sender, EventArgs e)   
+        {
+            camera_list.Items.Clear(); //리스트 목록 초기화 
         }
     }
 }

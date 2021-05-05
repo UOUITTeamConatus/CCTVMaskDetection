@@ -205,13 +205,19 @@
     <None Include="Resources\icons8-refresh-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-disconnected-321.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\icons8-database-backup-32.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-find-and-replace-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-shutdown-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-shutdown-48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-stop-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
