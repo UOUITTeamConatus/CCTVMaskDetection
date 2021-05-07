@@ -144,7 +144,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="models\black.model" />
     <None Include="models\default.model" />
     <None Include="models\deploy.prototxt" />
