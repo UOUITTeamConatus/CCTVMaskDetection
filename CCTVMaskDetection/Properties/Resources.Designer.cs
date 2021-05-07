@@ -63,6 +63,26 @@ namespace CCTVMaskDetection.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_camera_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-camera-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_bullet_camera_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-bullet-camera-32", resourceCulture);
@@ -73,9 +93,9 @@ namespace CCTVMaskDetection.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_bullet_camera_64 {
+        internal static System.Drawing.Bitmap icons8_connected_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-bullet-camera-64", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-connected-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +103,9 @@ namespace CCTVMaskDetection.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_four_squares_50 {
+        internal static System.Drawing.Bitmap icons8_database_backup_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-four-squares-50", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-database-backup-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +113,9 @@ namespace CCTVMaskDetection.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_pause_32 {
+        internal static System.Drawing.Bitmap icons8_disconnected_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-pause-32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-disconnected-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +123,9 @@ namespace CCTVMaskDetection.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_power_off_button_32 {
+        internal static System.Drawing.Bitmap icons8_find_and_replace_26 {
             get {
-                object obj = ResourceManager.GetObject("icons8-power-off-button-32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-find-and-replace-26", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +143,19 @@ namespace CCTVMaskDetection.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_rounded_square_50 {
+        internal static System.Drawing.Bitmap icons8_refresh_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-rounded-square-50", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-refresh-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_save_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-save-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +173,29 @@ namespace CCTVMaskDetection.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_square_border_32 {
+        internal static System.Drawing.Bitmap icons8_shutdown_48__1_ {
             get {
-                object obj = ResourceManager.GetObject("icons8-square-border-32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-shutdown-48 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_shutdown_48__2_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-shutdown-48 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_stop_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-stop-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,29 +213,9 @@ namespace CCTVMaskDetection.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_wall_mount_camera_error_50 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-wall-mount-camera-error-50", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap logo1 {
-            get {
-                object obj = ResourceManager.GetObject("logo1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
