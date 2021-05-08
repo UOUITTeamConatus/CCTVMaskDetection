@@ -255,7 +255,7 @@ namespace CCTVMaskDetection
                     //카메라 리스트 업데이트
 
                     camera_list.Items[0].SubItems[1].Text = "연결 성공";
-                    camera0_consol.AppendText("연결 성공 " + now_time + Environment.NewLine);
+                    camera0_console.AppendText("연결 성공 " + now_time + Environment.NewLine);
                 }
             }
             catch (Exception)
@@ -271,7 +271,7 @@ namespace CCTVMaskDetection
                     //카메라 리스트 업데이트
 
                     camera_list.Items[1].SubItems[1].Text = "연결 성공";
-                    camera1_consol.AppendText("연결 성공 " + now_time + Environment.NewLine);
+                    camera1_console.AppendText("연결 성공 " + now_time + Environment.NewLine);
                 }
             }
             catch (Exception)
@@ -399,14 +399,14 @@ namespace CCTVMaskDetection
 
             if (camera_num == 0)
             {
-                camera0_consol.Clear();
-                camera0_consol.AppendText("탐지된 인원 : " + (maskcnt + nomaskcnt) + " / " + "마스크 착용자 : " + maskcnt + " / " + " 마스크 미착용자 : " + nomaskcnt + Environment.NewLine + "시각 : " + date_time + Environment.NewLine);
+                camera0_console.Clear();
+                camera0_console.AppendText("탐지된 인원 : " + (maskcnt + nomaskcnt) + " / " + "마스크 착용자 : " + maskcnt + " / " + " 마스크 미착용자 : " + nomaskcnt + Environment.NewLine + "시각 : " + date_time + Environment.NewLine);
                 count[0] = 0;
             }
             else if (camera_num == 1)
             {
-                camera1_consol.Clear();
-                camera1_consol.AppendText("탐지된 인원 : " + (maskcnt + nomaskcnt) + " / " + "마스크 착용자 : " + maskcnt + " / " + " 마스크 미착용자 : " + nomaskcnt + Environment.NewLine + "시각 : " + date_time + Environment.NewLine);
+                camera1_console.Clear();
+                camera1_console.AppendText("탐지된 인원 : " + (maskcnt + nomaskcnt) + " / " + "마스크 착용자 : " + maskcnt + " / " + " 마스크 미착용자 : " + nomaskcnt + Environment.NewLine + "시각 : " + date_time + Environment.NewLine);
                 count[1] = 0;
             }
         }
@@ -417,9 +417,9 @@ namespace CCTVMaskDetection
             videoWriter[camera_num].Open(Path + date_time + camera_num + ".avi", FourCC.XVID, fps, image.Size());
 
             if (camera_num == 0)
-                camera0_consol.AppendText("카메라 : " + camera_num + " / " + "녹화 시각 : " + date_time + " / " + "프레임 : " + fps + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
+                camera0_console.AppendText("카메라 : " + camera_num + " / " + "녹화 시각 : " + date_time + " / " + "프레임 : " + fps + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
             else if (camera_num == 1)
-                camera1_consol.AppendText("카메라 : " + camera_num + " / " + "녹화 시각 : " + date_time + " / " + "프레임 : " + fps + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
+                camera1_console.AppendText("카메라 : " + camera_num + " / " + "녹화 시각 : " + date_time + " / " + "프레임 : " + fps + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
         }
 
         private void Capture_image(Mat image, int camera_num) //프레임 캡쳐 및 저장 
@@ -427,12 +427,12 @@ namespace CCTVMaskDetection
             string date_time = DateTime.Now.ToString("yyyy년MM월dd일hh시mm분ss초");
             if (camera_num == 0)
             {
-                camera0_consol.AppendText("카메라 : " + camera_num + " / " + "캡처 시각 : " + date_time + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
+                camera0_console.AppendText("카메라 : " + camera_num + " / " + "캡처 시각 : " + date_time + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
                 Cv2.ImWrite(Path + date_time + camera_num + ".png", (image));
             }
             else if (camera_num == 1)
             {
-                camera1_consol.AppendText("카메라 : " + camera_num + " / " + "캡처 시각 : " + date_time + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
+                camera1_console.AppendText("카메라 : " + camera_num + " / " + "캡처 시각 : " + date_time + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
                 Cv2.ImWrite(Path + date_time + camera_num + ".png", (image));
             }
         }
@@ -444,13 +444,13 @@ namespace CCTVMaskDetection
                 if (camera0_select.Checked == true && camera1_select.Checked == false)
                 {
                     videoWriter[0].Release();    //동영상 녹화 중지 (작업 메모리 할당 해제) 
-                    camera0_consol.AppendText("녹화 중지" + Environment.NewLine);
+                    camera0_console.AppendText("녹화 중지" + Environment.NewLine);
 
                 }
                 else if (camera0_select.Checked == false && camera1_select.Checked == true)
                 {
                     videoWriter[1].Release();
-                    camera1_consol.AppendText("녹화 중지" + Environment.NewLine);
+                    camera1_console.AppendText("녹화 중지" + Environment.NewLine);
 
                 }
                 stop_cbtn.Image = Properties.Resources.icons8_stop_squared_32;
@@ -464,26 +464,26 @@ namespace CCTVMaskDetection
 
         private void log0_clear_Click(object sender, EventArgs e)
         {
-            camera0_consol.Clear(); //로그창 지우기
+            camera0_console.Clear(); //로그창 지우기
         }
 
         private void log1_clear_Click(object sender, EventArgs e)
         {
-            camera1_consol.Clear(); //로그창 지우기
+            camera1_console.Clear(); //로그창 지우기
         }
 
         private void log0_save_Click(object sender, EventArgs e)
         {
             string logfile_name = "camera0_log.txt";
-            System.IO.File.WriteAllText(Path + logfile_name, camera0_consol.Text, Encoding.Default);
-            camera0_consol.AppendText("로그 저장됨 " + Path + logfile_name + Environment.NewLine);
+            System.IO.File.WriteAllText(Path + logfile_name, camera0_console.Text, Encoding.Default);
+            camera0_console.AppendText("로그 저장됨 " + Path + logfile_name + Environment.NewLine);
         }
 
         private void log1_save_Click(object sender, EventArgs e)
         {
             string logfile_name = "camera1_log.txt";
-            System.IO.File.WriteAllText(Path + logfile_name, camera1_consol.Text, Encoding.Default);
-            camera1_consol.AppendText("로그 저장됨 " + Path + logfile_name + Environment.NewLine);
+            System.IO.File.WriteAllText(Path + logfile_name, camera1_console.Text, Encoding.Default);
+            camera1_console.AppendText("로그 저장됨 " + Path + logfile_name + Environment.NewLine);
         }
     }
 }
