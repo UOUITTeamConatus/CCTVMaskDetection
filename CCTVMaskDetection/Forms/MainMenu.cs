@@ -75,6 +75,8 @@ namespace CCTVMaskDetection
             nocount[1] = 0;
             cam_timer[0] = timer1;
             cam_timer[1] = timer2;
+            backUp_camera0();
+            backUp_camera1();
             //변수 초기화 
         }
         private void path_btn_Click(object sender, EventArgs e)
