@@ -30,12 +30,12 @@ namespace CCTVMaskDetection.Detection
         public MobileNetV2 Mobilenetv2 { get => _mobilenetv2; set => _mobilenetv2 = value; }
         #endregion
 
-        public (Mat, int, int) DetectMask(Mat frame, int mask, int nomask)
+        public (Mat, int, int) DetectMask(Mat frame)
         {
             string timenow;
             Mat result = frame;
-            int nomaskcnt = nomask;
-            int maskcnt = mask;
+            int nomaskcnt = 0;
+            int maskcnt = 0;
             //우선 받아온 이미지 frame을 그대로 result로 복사
             Mat blob = CvDnn.BlobFromImage(result, 1, new OpenCvSharp.Size(300, 300), new OpenCvSharp.Scalar(104, 177, 123), false, false);
             Facenet.SetInput(blob, "data");
