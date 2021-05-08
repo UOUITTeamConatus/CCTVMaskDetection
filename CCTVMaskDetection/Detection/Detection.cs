@@ -104,7 +104,7 @@ namespace CCTVMaskDetection.Detection
                 }
             }
             timenow = DateTime.Now.ToString("yyyy-MM-dd-HH:mm:ss");
-            Cv2.PutText(result, timenow, new OpenCvSharp.Point(0, 20), HersheyFonts.HersheySimplex, 0.8, new OpenCvSharp.Scalar(0, 0, 0));
+            Cv2.PutText(result, timenow, new OpenCvSharp.Point(0, 20), HersheyFonts.HersheySimplex, 0.5, new OpenCvSharp.Scalar(0, 255, 0));
             return (result, maskcnt, nomaskcnt);
         }
     }
