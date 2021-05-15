@@ -37,19 +37,11 @@ namespace CCTVMaskDetection
             this.cctvMonitor1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.camera1_console1 = new System.Windows.Forms.TextBox();
             this.camera1_console0 = new System.Windows.Forms.TextBox();
+            this.camera1_console1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.log1_save = new System.Windows.Forms.Button();
-            this.log1_clear = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.log0_save = new System.Windows.Forms.Button();
-            this.log0_clear = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.camera0_console0 = new System.Windows.Forms.TextBox();
             this.camera0_console1 = new System.Windows.Forms.TextBox();
@@ -108,9 +100,7 @@ namespace CCTVMaskDetection
             ((System.ComponentModel.ISupportInitialize)(this.cctvMonitor1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.controlPanel0.SuspendLayout();
             this.capture_record_box.SuspendLayout();
@@ -221,18 +211,6 @@ namespace CCTVMaskDetection
             this.tableLayoutPanel3.Size = new System.Drawing.Size(639, 313);
             this.tableLayoutPanel3.TabIndex = 20;
             // 
-            // camera1_console1
-            // 
-            this.camera1_console1.BackColor = System.Drawing.SystemColors.InfoText;
-            this.camera1_console1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.camera1_console1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.camera1_console1.ForeColor = System.Drawing.SystemColors.Window;
-            this.camera1_console1.Location = new System.Drawing.Point(3, 159);
-            this.camera1_console1.Multiline = true;
-            this.camera1_console1.Name = "camera1_console1";
-            this.camera1_console1.Size = new System.Drawing.Size(633, 151);
-            this.camera1_console1.TabIndex = 2;
-            // 
             // camera1_console0
             // 
             this.camera1_console0.BackColor = System.Drawing.SystemColors.InfoText;
@@ -247,59 +225,27 @@ namespace CCTVMaskDetection
             this.camera1_console0.Size = new System.Drawing.Size(633, 152);
             this.camera1_console0.TabIndex = 0;
             // 
+            // camera1_console1
+            // 
+            this.camera1_console1.BackColor = System.Drawing.SystemColors.InfoText;
+            this.camera1_console1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.camera1_console1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.camera1_console1.ForeColor = System.Drawing.SystemColors.Window;
+            this.camera1_console1.Location = new System.Drawing.Point(3, 159);
+            this.camera1_console1.Multiline = true;
+            this.camera1_console1.Name = "camera1_console1";
+            this.camera1_console1.Size = new System.Drawing.Size(633, 151);
+            this.camera1_console1.TabIndex = 2;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.log1_save);
-            this.panel2.Controls.Add(this.log1_clear);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 321);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(639, 74);
             this.panel2.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(507, 54);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 12);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "clear";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(571, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 12);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "save";
-            // 
-            // log1_save
-            // 
-            this.log1_save.AutoSize = true;
-            this.log1_save.Image = global::CCTVMaskDetection.Properties.Resources.icons8_save_48;
-            this.log1_save.Location = new System.Drawing.Point(562, 5);
-            this.log1_save.Name = "log1_save";
-            this.log1_save.Size = new System.Drawing.Size(54, 54);
-            this.log1_save.TabIndex = 6;
-            this.log1_save.UseVisualStyleBackColor = true;
-            this.log1_save.Click += new System.EventHandler(this.log1_save_Click);
-            // 
-            // log1_clear
-            // 
-            this.log1_clear.AutoSize = true;
-            this.log1_clear.Image = global::CCTVMaskDetection.Properties.Resources.icons8_refresh_32;
-            this.log1_clear.Location = new System.Drawing.Point(495, 5);
-            this.log1_clear.Name = "log1_clear";
-            this.log1_clear.Size = new System.Drawing.Size(52, 48);
-            this.log1_clear.TabIndex = 6;
-            this.log1_clear.UseVisualStyleBackColor = true;
-            this.log1_clear.Click += new System.EventHandler(this.log1_clear_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -322,56 +268,12 @@ namespace CCTVMaskDetection
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.log0_save);
-            this.panel1.Controls.Add(this.log0_clear);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 321);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(639, 74);
             this.panel1.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(507, 54);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 12);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Clear";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(573, 54);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 12);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "save";
-            // 
-            // log0_save
-            // 
-            this.log0_save.AutoSize = true;
-            this.log0_save.Image = global::CCTVMaskDetection.Properties.Resources.icons8_save_48;
-            this.log0_save.Location = new System.Drawing.Point(565, 3);
-            this.log0_save.Name = "log0_save";
-            this.log0_save.Size = new System.Drawing.Size(54, 54);
-            this.log0_save.TabIndex = 5;
-            this.log0_save.UseVisualStyleBackColor = true;
-            this.log0_save.Click += new System.EventHandler(this.log0_save_Click);
-            // 
-            // log0_clear
-            // 
-            this.log0_clear.AutoSize = true;
-            this.log0_clear.Image = global::CCTVMaskDetection.Properties.Resources.icons8_refresh_32;
-            this.log0_clear.Location = new System.Drawing.Point(498, 3);
-            this.log0_clear.Name = "log0_clear";
-            this.log0_clear.Size = new System.Drawing.Size(52, 48);
-            this.log0_clear.TabIndex = 7;
-            this.log0_clear.UseVisualStyleBackColor = true;
-            this.log0_clear.Click += new System.EventHandler(this.log0_clear_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -872,14 +774,14 @@ namespace CCTVMaskDetection
             // 프로그램종료ToolStripMenuItem1
             // 
             this.프로그램종료ToolStripMenuItem1.Name = "프로그램종료ToolStripMenuItem1";
-            this.프로그램종료ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.프로그램종료ToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
             this.프로그램종료ToolStripMenuItem1.Text = "프로그램 종료";
             this.프로그램종료ToolStripMenuItem1.Click += new System.EventHandler(this.프로그램종료ToolStripMenuItem_Click);
             // 
             // 만든사람들ToolStripMenuItem1
             // 
             this.만든사람들ToolStripMenuItem1.Name = "만든사람들ToolStripMenuItem1";
-            this.만든사람들ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.만든사람들ToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
             this.만든사람들ToolStripMenuItem1.Text = "만든 사람들";
             this.만든사람들ToolStripMenuItem1.Click += new System.EventHandler(this.만든사람들ToolStripMenuItem_Click);
             // 
@@ -945,11 +847,7 @@ namespace CCTVMaskDetection
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.controlPanel0.ResumeLayout(false);
@@ -974,8 +872,6 @@ namespace CCTVMaskDetection
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button log0_save;
-        private System.Windows.Forms.Button log1_clear;
         private System.Windows.Forms.TableLayoutPanel cctvPanel;
         private System.Windows.Forms.PictureBox cctvMonitor1;
         private System.Windows.Forms.PictureBox cctvMonitor0;
@@ -998,11 +894,9 @@ namespace CCTVMaskDetection
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox camera1_console0;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button log1_save;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox camera0_console0;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button log0_clear;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 설정ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 프로그램종료ToolStripMenuItem;
@@ -1030,10 +924,6 @@ namespace CCTVMaskDetection
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label list_reset_label;
         private System.Windows.Forms.Label camera_connect_label;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 프로그램종료ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 만든사람들ToolStripMenuItem1;
