@@ -62,9 +62,9 @@ namespace CCTVMaskDetection
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(491, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 21);
+            this.label1.Size = new System.Drawing.Size(174, 21);
             this.label1.TabIndex = 1;
-            this.label1.Text = "CCTV방역관제 시스템";
+            this.label1.Text = "방역관제 CCTV 시스템";
             // 
             // label2
             // 
@@ -181,7 +181,7 @@ namespace CCTVMaskDetection
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "credit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TeamConatus CCTV방역관제시스템";
+            this.Text = "TeamConatus 방역관제 CCTV시스템";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
