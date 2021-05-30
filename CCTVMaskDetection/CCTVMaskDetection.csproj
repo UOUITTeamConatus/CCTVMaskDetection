@@ -150,7 +150,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="CCTVMaskDetection_TemporaryKey.pfx" />
     <None Include="models\black.model" />
     <None Include="models\default.model" />
     <None Include="models\deploy.prototxt" />
