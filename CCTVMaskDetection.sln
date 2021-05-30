@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCTVMaskDetection", "CCTVMaskDetection\CCTVMaskDetection.csproj", "{8EB7AA56-9101-40DF-92F9-5CA325F20323}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{159BA517-C3A9-49EF-9C9D-8164FE9784C9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -17,8 +15,6 @@ Global
 		{8EB7AA56-9101-40DF-92F9-5CA325F20323}.Debug|x64.Build.0 = Debug|x64
 		{8EB7AA56-9101-40DF-92F9-5CA325F20323}.Release|x64.ActiveCfg = Release|x64
 		{8EB7AA56-9101-40DF-92F9-5CA325F20323}.Release|x64.Build.0 = Release|x64
-		{159BA517-C3A9-49EF-9C9D-8164FE9784C9}.Debug|x64.ActiveCfg = Debug
-		{159BA517-C3A9-49EF-9C9D-8164FE9784C9}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

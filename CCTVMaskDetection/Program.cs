@@ -26,6 +26,10 @@ namespace CCTVMaskDetection
         [STAThread]
         static void Main()
         {
+            var pythonPath = currentPath + "\\python";
+            //Environment.SetEnvironmentVariable("PATH", $@"{pythonPath};" + Environment.GetEnvironmentVariable("PATH"));
+            Environment.SetEnvironmentVariable("PYTHONHOME", pythonPath);
+            Environment.SetEnvironmentVariable("PYTHONPATH ", $@"{pythonPath}\Lib");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainMenu());
