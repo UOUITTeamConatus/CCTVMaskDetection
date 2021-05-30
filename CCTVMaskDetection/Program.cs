@@ -10,10 +10,10 @@ namespace CCTVMaskDetection
     static class Program
     {
         //경로정보 -> 필요한 파일들에 대한 경로 정보
-        private static string currentPath = Path.GetDirectoryName(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName);
-        private static string prototxtPath = CurrentPath + "\\models\\deploy.prototxt";
-        private static string caffemodelPath = CurrentPath + "\\models\\res10_300x300_ssd_iter_140000.caffemodel";
-        private static string maskdetectorPath = CurrentPath + "\\models\\total.model";
+        private static string currentPath = Environment.CurrentDirectory;
+        private static string prototxtPath = currentPath + "\\models\\deploy.prototxt";
+        private static string caffemodelPath = currentPath + "\\models\\res10_300x300_ssd_iter_140000.caffemodel";
+        private static string maskdetectorPath = currentPath + "\\models\\total.model";
 
         public static string CurrentPath { get => currentPath; set => currentPath = value; }
         public static string PrototxtPath { get => prototxtPath; set => prototxtPath = value; }
