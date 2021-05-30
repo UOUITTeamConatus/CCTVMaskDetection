@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.ComponentModel;
 using System.Drawing;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -330,7 +329,7 @@ namespace CCTVMaskDetection
                 Bitmap bitmap = BitmapConverter.ToBitmap(frame);
                 cctvMonitor0.Image = bitmap;
 
-                Write_nomask_log(camera_num, mask, nomask);   //노마스크 로그 출력 
+                Write_nomask_log(camera_num, mask, nomask, fps[camera_num]);   //노마스크 로그 출력 
                 count[camera_num] = 0;
 
                 if (capture_cbtn.Checked == true && camera0_select.Checked == true && camera1_select.Checked == false)   //캡쳐 버튼이 눌리면
@@ -363,7 +362,7 @@ namespace CCTVMaskDetection
         {
             TimerTick(1);
         }
-        private void Write_nomask_log(int camera_num, int maskcnt, int nomaskcnt) //노마스크 탐지시 로그 출력을 위한 함수 
+        private void Write_nomask_log(int camera_num, int maskcnt, int nomaskcnt, double Fps) //노마스크 탐지시 로그 출력을 위한 함수 
         {
             string date_time = DateTime.Now.ToString("yyyy년MM월dd일hh시mm분ss초");
 
@@ -372,6 +371,7 @@ namespace CCTVMaskDetection
                 camera0_console0.Clear();
                 camera0_console0.AppendText("현재 시각 : " + date_time + Environment.NewLine);
                 camera0_console0.AppendText("탐지된 인원 : " + (maskcnt + nomaskcnt) + " / " + "마스크 착용자 : " + maskcnt + " / " + " 마스크 미착용자 : " + nomaskcnt + Environment.NewLine);
+                camera0_console0.AppendText("초당 프레임 수 : " + Fps);
                 count[0] = 0;
             }
             else if (camera_num == 1)
@@ -379,6 +379,7 @@ namespace CCTVMaskDetection
                 camera1_console0.Clear();
                 camera1_console0.AppendText("현재 시각 : " + date_time + Environment.NewLine);
                 camera1_console0.AppendText("탐지된 인원 : " + (maskcnt + nomaskcnt) + " / " + "마스크 착용자 : " + maskcnt + " / " + " 마스크 미착용자 : " + nomaskcnt + Environment.NewLine);
+                camera1_console0.AppendText("초당 프레임 수 : " + Fps);
                 count[1] = 0;
             }
         }
@@ -392,12 +393,10 @@ namespace CCTVMaskDetection
 
             if (camera_num == 0)
             {
-                //camera0_console1.Clear();
                 camera0_console1.AppendText("카메라 : " + camera_num + " / " + "녹화 시각 : " + date_time + " / " + "프레임 : " + fps + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
             }
             else if (camera_num == 1)
             {
-                //camera1_console1.Clear();
                 camera1_console1.AppendText("카메라 : " + camera_num + " / " + "녹화 시각 : " + date_time + " / " + "프레임 : " + fps + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
             }
         }
@@ -407,13 +406,11 @@ namespace CCTVMaskDetection
             string date_time = DateTime.Now.ToString("yyyy년MM월dd일hh시mm분ss초");
             if (camera_num == 0)
             {
-                //camera0_console1.Clear();
                 camera0_console1.AppendText("카메라 : " + camera_num + " / " + "캡처 시각 : " + date_time + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
                 Cv2.ImWrite(Path + date_time + camera_num + ".png", (image));
             }
             else if (camera_num == 1)
             {
-                //camera1_console1.Clear();
                 camera1_console1.AppendText("카메라 : " + camera_num + " / " + "캡처 시각 : " + date_time + Environment.NewLine + "저장 위치 : " + Path + Environment.NewLine);
                 Cv2.ImWrite(Path + date_time + camera_num + ".png", (image));
             }
