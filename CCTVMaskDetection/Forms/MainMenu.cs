@@ -330,11 +330,6 @@ namespace CCTVMaskDetection
                 Bitmap bitmap = BitmapConverter.ToBitmap(frame);
                 cctvMonitor0.Image = bitmap;
 
-                /*if (nomask != count[camera_num])    //노마스크일 때만 로그를 출력하기 위해 현 카운트 값과 노마스크 수 값을 비교 
-                {
-                    Write_nomask_log(camera_num, mask, nomask);   //노마스크 로그 출력 
-                    count[camera_num] = 0;
-                } */   
                 Write_nomask_log(camera_num, mask, nomask);   //노마스크 로그 출력 
                 count[camera_num] = 0;
 
@@ -446,7 +441,7 @@ namespace CCTVMaskDetection
         #endregion
         private void list_reset_Click(object sender, EventArgs e)
         {
-            //camera_list.Items.Clear(); 
+            camera_list.Items.Clear(); 
             //리스트 목록 초기화 
         }  
         private void 프로그램종료ToolStripMenuItem_Click(object sender, EventArgs e)

@@ -11,13 +11,11 @@ namespace CCTVMaskDetection
     {
         //경로정보 -> 필요한 파일들에 대한 경로 정보
         private static string currentPath = Path.GetDirectoryName(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName);
-        private static string mediaPath = CurrentPath + "\\models\\media";
         private static string prototxtPath = CurrentPath + "\\models\\deploy.prototxt";
         private static string caffemodelPath = CurrentPath + "\\models\\res10_300x300_ssd_iter_140000.caffemodel";
         private static string maskdetectorPath = CurrentPath + "\\models\\total.model";
 
         public static string CurrentPath { get => currentPath; set => currentPath = value; }
-        public static string MediaPath { get => mediaPath; set => mediaPath = value; }
         public static string PrototxtPath { get => prototxtPath; set => prototxtPath = value; }
         public static string CaffemodelPath { get => caffemodelPath; set => caffemodelPath = value; }
         public static string MaskdetectorPath { get => maskdetectorPath; set => maskdetectorPath = value; }
