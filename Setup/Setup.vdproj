@@ -1402,7 +1402,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CCTVMaskDetection"
         "ProductCode" = "8:{3D62D7AC-862C-4C7A-BD8C-1965AFFB1630}"
-        "PackageCode" = "8:{4AFE629D-16F4-46A8-9761-29C7D3C7427A}"
+        "PackageCode" = "8:{4A0F60F6-59D7-4AEA-954F-C5344E2A9CDB}"
         "UpgradeCode" = "8:{8DE07486-7F64-4616-AE2B-54A4AFD8C2AF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1524,7 +1524,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1725ABE7C856411199F5A6451A0FA6C1"
             {
-            "Name" = "8:CCTVMaskDetection.exe"
+            "Name" = "8:CCTVMaskDetection"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -1538,7 +1538,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E84496C6F490406DB3CA2791DCFA6906"
             {
-            "Name" = "8:CCTVMaskDetection.exe"
+            "Name" = "8:CCTVMaskDetection"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -1552,7 +1552,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F1F23719CA0947D984FB3D75C92DD6F0"
             {
-            "Name" = "8:CCTVMaskDetection.exe"
+            "Name" = "8:CCTVMaskDetection"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
