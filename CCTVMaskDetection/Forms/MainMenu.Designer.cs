@@ -46,15 +46,6 @@ namespace CCTVMaskDetection
             this.camera0_console0 = new System.Windows.Forms.TextBox();
             this.camera0_console1 = new System.Windows.Forms.TextBox();
             this.controlPanel0 = new System.Windows.Forms.TableLayoutPanel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.프로그램종료ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.만든사람들ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.프로그램종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.만든사람들ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.save_path_box = new System.Windows.Forms.GroupBox();
@@ -93,6 +84,15 @@ namespace CCTVMaskDetection
             this.camera_connect_label = new System.Windows.Forms.Label();
             this.list_reset = new System.Windows.Forms.Button();
             this.camera_connect = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.프로그램종료ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.만든사람들ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.프로그램종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.만든사람들ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -105,7 +105,6 @@ namespace CCTVMaskDetection
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.controlPanel0.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.save_path_box.SuspendLayout();
@@ -114,6 +113,7 @@ namespace CCTVMaskDetection
             this.modeChg1.SuspendLayout();
             this.modeChg0.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -347,71 +347,6 @@ namespace CCTVMaskDetection
             this.controlPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.controlPanel0.Size = new System.Drawing.Size(479, 1005);
             this.controlPanel0.TabIndex = 15;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1784, 28);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.프로그램종료ToolStripMenuItem1,
-            this.만든사람들ToolStripMenuItem1});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(53, 24);
-            this.toolStripMenuItem1.Text = "메뉴";
-            // 
-            // 프로그램종료ToolStripMenuItem1
-            // 
-            this.프로그램종료ToolStripMenuItem1.Name = "프로그램종료ToolStripMenuItem1";
-            this.프로그램종료ToolStripMenuItem1.Size = new System.Drawing.Size(187, 26);
-            this.프로그램종료ToolStripMenuItem1.Text = "프로그램 종료";
-            this.프로그램종료ToolStripMenuItem1.Click += new System.EventHandler(this.프로그램종료ToolStripMenuItem_Click);
-            // 
-            // 만든사람들ToolStripMenuItem1
-            // 
-            this.만든사람들ToolStripMenuItem1.Name = "만든사람들ToolStripMenuItem1";
-            this.만든사람들ToolStripMenuItem1.Size = new System.Drawing.Size(187, 26);
-            this.만든사람들ToolStripMenuItem1.Text = "만든 사람들";
-            this.만든사람들ToolStripMenuItem1.Click += new System.EventHandler(this.만든사람들ToolStripMenuItem_Click);
-            // 
-            // 설정ToolStripMenuItem
-            // 
-            this.설정ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.프로그램종료ToolStripMenuItem,
-            this.만든사람들ToolStripMenuItem});
-            this.설정ToolStripMenuItem.Name = "설정ToolStripMenuItem";
-            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.설정ToolStripMenuItem.Text = "설정";
-            // 
-            // 프로그램종료ToolStripMenuItem
-            // 
-            this.프로그램종료ToolStripMenuItem.Name = "프로그램종료ToolStripMenuItem";
-            this.프로그램종료ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
-            this.프로그램종료ToolStripMenuItem.Text = "프로그램종료";
-            this.프로그램종료ToolStripMenuItem.Click += new System.EventHandler(this.프로그램종료ToolStripMenuItem_Click);
-            // 
-            // 만든사람들ToolStripMenuItem
-            // 
-            this.만든사람들ToolStripMenuItem.Name = "만든사람들ToolStripMenuItem";
-            this.만든사람들ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
-            this.만든사람들ToolStripMenuItem.Text = "만든사람들";
-            this.만든사람들ToolStripMenuItem.Click += new System.EventHandler(this.만든사람들ToolStripMenuItem_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // timer2
-            // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // tableLayoutPanel5
             // 
@@ -668,12 +603,13 @@ namespace CCTVMaskDetection
             // 
             // IOButton1
             // 
+            this.IOButton1.AutoSize = true;
             this.IOButton1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.IOButton1.Image = global::CCTVMaskDetection.Properties.Resources.icons8_shutdown_48__2_;
-            this.IOButton1.Location = new System.Drawing.Point(298, 88);
+            this.IOButton1.Location = new System.Drawing.Point(269, 88);
             this.IOButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IOButton1.Name = "IOButton1";
-            this.IOButton1.Size = new System.Drawing.Size(82, 51);
+            this.IOButton1.Size = new System.Drawing.Size(54, 54);
             this.IOButton1.TabIndex = 20;
             this.IOButton1.UseVisualStyleBackColor = true;
             this.IOButton1.Click += new System.EventHandler(this.IOButton1_Click);
@@ -712,7 +648,7 @@ namespace CCTVMaskDetection
             this.addrSaveBtn_1.Location = new System.Drawing.Point(196, 88);
             this.addrSaveBtn_1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addrSaveBtn_1.Name = "addrSaveBtn_1";
-            this.addrSaveBtn_1.Size = new System.Drawing.Size(90, 51);
+            this.addrSaveBtn_1.Size = new System.Drawing.Size(67, 38);
             this.addrSaveBtn_1.TabIndex = 18;
             this.addrSaveBtn_1.UseVisualStyleBackColor = true;
             this.addrSaveBtn_1.Click += new System.EventHandler(this.addrSaveBtn_1_Click);
@@ -729,7 +665,7 @@ namespace CCTVMaskDetection
             // 
             // camera1_addr
             // 
-            this.camera1_addr.Location = new System.Drawing.Point(80, 56);
+            this.camera1_addr.Location = new System.Drawing.Point(87, 59);
             this.camera1_addr.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.camera1_addr.Name = "camera1_addr";
             this.camera1_addr.Size = new System.Drawing.Size(300, 25);
@@ -756,12 +692,13 @@ namespace CCTVMaskDetection
             // 
             // IOButton0
             // 
+            this.IOButton0.AutoSize = true;
             this.IOButton0.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.IOButton0.Image = global::CCTVMaskDetection.Properties.Resources.icons8_shutdown_48__2_;
-            this.IOButton0.Location = new System.Drawing.Point(299, 86);
+            this.IOButton0.Location = new System.Drawing.Point(269, 86);
             this.IOButton0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IOButton0.Name = "IOButton0";
-            this.IOButton0.Size = new System.Drawing.Size(81, 50);
+            this.IOButton0.Size = new System.Drawing.Size(54, 54);
             this.IOButton0.TabIndex = 19;
             this.IOButton0.UseVisualStyleBackColor = true;
             this.IOButton0.Click += new System.EventHandler(this.IOButton0_Click);
@@ -794,19 +731,20 @@ namespace CCTVMaskDetection
             // 
             // addrSaveBtn_0
             // 
+            this.addrSaveBtn_0.AutoSize = true;
             this.addrSaveBtn_0.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.addrSaveBtn_0.Image = global::CCTVMaskDetection.Properties.Resources.icons8_add_32;
             this.addrSaveBtn_0.Location = new System.Drawing.Point(199, 86);
             this.addrSaveBtn_0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addrSaveBtn_0.Name = "addrSaveBtn_0";
-            this.addrSaveBtn_0.Size = new System.Drawing.Size(87, 50);
+            this.addrSaveBtn_0.Size = new System.Drawing.Size(64, 38);
             this.addrSaveBtn_0.TabIndex = 19;
             this.addrSaveBtn_0.UseVisualStyleBackColor = true;
             this.addrSaveBtn_0.Click += new System.EventHandler(this.addrSaveBtn_0_Click);
             // 
             // camera0_addr
             // 
-            this.camera0_addr.Location = new System.Drawing.Point(80, 55);
+            this.camera0_addr.Location = new System.Drawing.Point(89, 55);
             this.camera0_addr.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.camera0_addr.Name = "camera0_addr";
             this.camera0_addr.Size = new System.Drawing.Size(300, 25);
@@ -859,6 +797,7 @@ namespace CCTVMaskDetection
             // 
             // list_reset
             // 
+            this.list_reset.AutoSize = true;
             this.list_reset.Image = global::CCTVMaskDetection.Properties.Resources.icons8_refresh_32;
             this.list_reset.Location = new System.Drawing.Point(134, 31);
             this.list_reset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -870,6 +809,7 @@ namespace CCTVMaskDetection
             // 
             // camera_connect
             // 
+            this.camera_connect.AutoSize = true;
             this.camera_connect.Image = global::CCTVMaskDetection.Properties.Resources.icons8_disconnected_32;
             this.camera_connect.Location = new System.Drawing.Point(17, 31);
             this.camera_connect.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -878,6 +818,71 @@ namespace CCTVMaskDetection
             this.camera_connect.TabIndex = 23;
             this.camera_connect.UseVisualStyleBackColor = true;
             this.camera_connect.Click += new System.EventHandler(this.camera_connect_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1784, 28);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.프로그램종료ToolStripMenuItem1,
+            this.만든사람들ToolStripMenuItem1});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(53, 24);
+            this.toolStripMenuItem1.Text = "메뉴";
+            // 
+            // 프로그램종료ToolStripMenuItem1
+            // 
+            this.프로그램종료ToolStripMenuItem1.Name = "프로그램종료ToolStripMenuItem1";
+            this.프로그램종료ToolStripMenuItem1.Size = new System.Drawing.Size(187, 26);
+            this.프로그램종료ToolStripMenuItem1.Text = "프로그램 종료";
+            this.프로그램종료ToolStripMenuItem1.Click += new System.EventHandler(this.프로그램종료ToolStripMenuItem_Click);
+            // 
+            // 만든사람들ToolStripMenuItem1
+            // 
+            this.만든사람들ToolStripMenuItem1.Name = "만든사람들ToolStripMenuItem1";
+            this.만든사람들ToolStripMenuItem1.Size = new System.Drawing.Size(187, 26);
+            this.만든사람들ToolStripMenuItem1.Text = "만든 사람들";
+            this.만든사람들ToolStripMenuItem1.Click += new System.EventHandler(this.만든사람들ToolStripMenuItem_Click);
+            // 
+            // 설정ToolStripMenuItem
+            // 
+            this.설정ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.프로그램종료ToolStripMenuItem,
+            this.만든사람들ToolStripMenuItem});
+            this.설정ToolStripMenuItem.Name = "설정ToolStripMenuItem";
+            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.설정ToolStripMenuItem.Text = "설정";
+            // 
+            // 프로그램종료ToolStripMenuItem
+            // 
+            this.프로그램종료ToolStripMenuItem.Name = "프로그램종료ToolStripMenuItem";
+            this.프로그램종료ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.프로그램종료ToolStripMenuItem.Text = "프로그램종료";
+            this.프로그램종료ToolStripMenuItem.Click += new System.EventHandler(this.프로그램종료ToolStripMenuItem_Click);
+            // 
+            // 만든사람들ToolStripMenuItem
+            // 
+            this.만든사람들ToolStripMenuItem.Name = "만든사람들ToolStripMenuItem";
+            this.만든사람들ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.만든사람들ToolStripMenuItem.Text = "만든사람들";
+            this.만든사람들ToolStripMenuItem.Click += new System.EventHandler(this.만든사람들ToolStripMenuItem_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // MainMenu
             // 
@@ -913,8 +918,6 @@ namespace CCTVMaskDetection
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.controlPanel0.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.save_path_box.ResumeLayout(false);
@@ -928,6 +931,8 @@ namespace CCTVMaskDetection
             this.modeChg0.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
