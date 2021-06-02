@@ -284,6 +284,11 @@ namespace CCTVMaskDetection
                     camera0_addr.Text = rtspaddr;
                     addrSaveBtn_0.PerformClick();
                 }
+                ListViewItem lvi = new ListViewItem();//카메라 리스트에 들어갈 데이터 값
+                lvi.Text = camera0_addr.Text;
+                lvi.SubItems.Add("-");
+                camera_list.Items.Add(lvi);
+                camera0_addr.Text = string.Empty;
             }
         }
         private void backUp_camera1()
@@ -308,6 +313,11 @@ namespace CCTVMaskDetection
                     camera1_addr.Text = rtspaddr;
                     addrSaveBtn_1.PerformClick();
                 }
+                ListViewItem lvi = new ListViewItem();//카메라 리스트에 들어갈 데이터 값
+                lvi.Text = camera1_addr.Text;
+                lvi.SubItems.Add("-");
+                camera_list.Items.Add(lvi);
+                camera1_addr.Text = string.Empty;
             }
         }
 
