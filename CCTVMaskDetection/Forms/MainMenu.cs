@@ -210,6 +210,38 @@ namespace CCTVMaskDetection
                 videoCapture[1].Open(rtspAddr[1]);
             }
         }
+        private void camera1_load()
+        {
+            camera0_Check(); 
+            if (videoCapture[0].IsOpened())
+            {
+                string now_time = DateTime.Now.ToString("yyyy년MM월dd일hh시mm분ss초");
+                //카메라 리스트 업데이트
+
+                camera_list.Items[0].SubItems[1].Text = "연결 성공";
+                camera0_console0.AppendText("연결 성공 " + now_time + Environment.NewLine);
+            }
+            else
+            {
+                camera_list.Items[0].SubItems[1].Text = "연결 실패";
+            }
+        }
+        private void camera2_load()
+        {
+            camera1_Check();
+            if (videoCapture[1].IsOpened())
+            {
+                string now_time = DateTime.Now.ToString("yyyy년MM월dd일hh시mm분ss초");
+                //카메라 리스트 업데이트
+
+                camera_list.Items[1].SubItems[1].Text = "연결 성공";
+                camera1_console0.AppendText("연결 성공 " + now_time + Environment.NewLine);
+            }
+            else
+            {
+                camera_list.Items[1].SubItems[1].Text = "연결 실패";
+            }
+        }
 
         private void camera_load()
         {
@@ -220,43 +252,14 @@ namespace CCTVMaskDetection
             videoWriter[1] = new VideoWriter();
             try
             {
-                camera0_Check();
-                if (videoCapture[0].IsOpened())
-                {
-                    string now_time = DateTime.Now.ToString("yyyy년MM월dd일hh시mm분ss초");
-                    //카메라 리스트 업데이트
-
-                    camera_list.Items[0].SubItems[1].Text = "연결 성공";
-                    camera0_console0.AppendText("연결 성공 " + now_time + Environment.NewLine);
-                }
-                else
-                {
-                    camera_list.Items[0].SubItems[1].Text = "연결 실패";
-                }
+                camera1_load();
             }
-            catch
-            {
-               
-            }
+            catch { }
             try
             {
-                camera1_Check();
-                if (videoCapture[1].IsOpened())
-                {
-                    string now_time = DateTime.Now.ToString("yyyy년MM월dd일hh시mm분ss초");
-                    //카메라 리스트 업데이트
-
-                    camera_list.Items[1].SubItems[1].Text = "연결 성공";
-                    camera1_console0.AppendText("연결 성공 " + now_time + Environment.NewLine);
-                }
-                else
-                {
-                    camera_list.Items[1].SubItems[1].Text = "연결 실패";
-                }
+                camera2_load();
             }
-            catch
-            {
-            }
+            catch { }
         }
         private void backUp_camera0()
         {
@@ -264,25 +267,23 @@ namespace CCTVMaskDetection
             FileInfo filecheck0 = new FileInfo(Application.StartupPath + "\\CAM_Log1.ini");
             if (filecheck0.Exists)
             {
-                string type = ini.ReadValue2("TYPE", "type",Application.StartupPath + "\\CAM_Log1.ini");
+                string type = ini.ReadValue2("TYPE", "type", Application.StartupPath + "\\CAM_Log1.ini");
 
                 if (type == "web")
                 {
-                    chk_wc0.PerformClick();
-
+                    Console.WriteLine("Web");
+                    chk_wc0.Checked = true;
                     string webaddr = ini.ReadValue("CAMinfor", "Address", Application.StartupPath + "\\CAM_Log1.ini");
-
                     camera0_addr.Text = webaddr;
+                    addrSaveBtn_0.PerformClick();
                 }
                 else
                 {
-                    chk_Ip0.PerformClick();
-
+                    chk_Ip0.Checked = true;
                     string rtspaddr = ini.ReadValue("CAMinfor", "Address", Application.StartupPath + "\\CAM_Log1.ini");
-
                     camera0_addr.Text = rtspaddr;
+                    addrSaveBtn_0.PerformClick();
                 }
-                addrSaveBtn_0.PerformClick();
             }
         }
         private void backUp_camera1()
@@ -295,23 +296,19 @@ namespace CCTVMaskDetection
 
                 if (type == "web")
                 {
-                    chk_wc1.PerformClick();
-
+                    chk_wc1.Checked = true;
                     string webaddr = ini.ReadValue("CAMinfor", "Address", Application.StartupPath + "\\CAM_Log2.ini");
-
                     camera1_addr.Text = webaddr;
+                    addrSaveBtn_1.PerformClick();
                 }
                 else
                 {
-                    chk_Ip1.PerformClick();
-
+                    chk_Ip1.Checked = true;
                     string rtspaddr = ini.ReadValue("CAMinfor", "Address", Application.StartupPath + "\\CAM_Log2.ini");
-
                     camera1_addr.Text = rtspaddr;
+                    addrSaveBtn_1.PerformClick();
                 }
-                addrSaveBtn_1.PerformClick();
             }
-
         }
 
         #endregion
@@ -438,9 +435,9 @@ namespace CCTVMaskDetection
         #endregion
         private void list_reset_Click(object sender, EventArgs e)
         {
-            camera_list.Items.Clear(); 
+            camera_list.Items.Clear();
             //리스트 목록 초기화 
-        }  
+        }
         private void 프로그램종료ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("프로그램을 종료하시겠습니까?", "TeamConatus CCTV방역관제시스템", MessageBoxButtons.YesNo) == DialogResult.Yes)
