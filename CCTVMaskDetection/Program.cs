@@ -32,6 +32,7 @@ namespace CCTVMaskDetection
             Environment.SetEnvironmentVariable("PYTHONPATH ", $@"{pythonPath}\Lib");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Console.Writeline("Test");
             Application.Run(new MainMenu());
         }
     }
