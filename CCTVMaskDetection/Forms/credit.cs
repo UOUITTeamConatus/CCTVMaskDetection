@@ -19,14 +19,6 @@ namespace CCTVMaskDetection
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            try
-            {
-                VisitLink();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("해당 링크에 접속할 수 없습니다.");
-            }
         }
         private void VisitLink()
         {
