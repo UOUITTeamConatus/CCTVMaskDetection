@@ -9,7 +9,7 @@ namespace CCTVMaskDetection
 {
     static class Program
     {
-        //경로정보 -> 필요한 파일들에 대한 경로 정보 test
+        //경로정보 -> 필요한 파일들에 대한 경로 정보 testsadljkfhajsdklgfweolg
         private static string currentPath = Environment.CurrentDirectory;
         private static string prototxtPath = currentPath + "\\models\\deploy.prototxt";
         private static string caffemodelPath = currentPath + "\\models\\res10_300x300_ssd_iter_140000.caffemodel";
