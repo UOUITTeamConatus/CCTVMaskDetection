@@ -1,5 +1,5 @@
 # CCTVMaskDetection - 방역관제 CCTV 시스템
-## 캡스톤디자인2 Team Conatus 졸업작품
+## 2021년 울산대학교 IT Team Conatus 졸업작품
 - 20162149 손우진
   - 팀장, AI & 영상처리 로직 개발, 기술 연구개발
   - 관제 애플리케이션 기획 및 개발 감독
