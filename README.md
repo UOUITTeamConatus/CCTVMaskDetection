@@ -1,4 +1,6 @@
 # CCTVMaskDetection - 방역관제 CCTV 시스템
+![화면 캡처 2021-11-07 123653](https://user-images.githubusercontent.com/36991763/140631455-19247402-1b0a-4a96-8979-d00368a5d0f8.png)
+
 ## 2021년 울산대학교 IT Team Conatus 졸업작품
 - 20162149 손우진
   - 팀장, AI & 영상처리 로직 개발, 기술 연구개발
