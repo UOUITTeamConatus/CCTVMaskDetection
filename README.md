@@ -31,6 +31,7 @@ Conatus라는 팀 이름을 사용하기로 했습니다.
 ![image](https://user-images.githubusercontent.com/36991763/175933375-3a185527-510e-4e2a-bbc9-90bdb05f7b0c.png)  
 카메라를 사용하기 위해서는 직접 카메라 장치를 프로그램에 등록해야 합니다. Webcam 을 사용한다면, 입력 순서에 따라 0부터 N까지의 숫자를 주소로 사용하면 됩니다.
 Ip카메라라면 RTSP 주소를 입력하면 됩니다.
+
 ![image](https://user-images.githubusercontent.com/36991763/175933552-0bb5ef72-310d-42dd-96f9-c28366847d77.png)  
 현재는 Webcam 두 개를 연결 시킨 상황입니다. 전원 버튼을 누르면 각 화면 별로 등록 되어있는 카메라 영상이 출력되기 시작합니다. 
 콘솔 창에는 현재 화면의 모니터링 현황이 출력됩니다.
