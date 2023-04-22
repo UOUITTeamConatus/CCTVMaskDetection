@@ -1,4 +1,6 @@
 # CCTVMaskDetection - 방역관제 CCTV 시스템
+![그림1](https://user-images.githubusercontent.com/36991763/140631470-3c794548-60ad-4e9e-a9bb-64e3cfc0a633.png)
+
 ![화면 캡처 2021-11-07 123653](https://user-images.githubusercontent.com/36991763/140631455-19247402-1b0a-4a96-8979-d00368a5d0f8.png)
 
 ## 2021년 울산대학교 IT융합학부 Team Conatus 졸업작품
